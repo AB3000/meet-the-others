@@ -1,9 +1,8 @@
-
-
 .FadeAnimations{
-    position: absolute;
+    /* position: absolute; */
     animation-name: fadein;
     animation-duration: 3s;
+    text-align: center; 
 }
 
 @keyframes fadein{
