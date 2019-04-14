@@ -42,6 +42,12 @@ class App extends Component {
 
 
 const styles = StyleSheet.create({
+
+  html: {
+    backgroundColor: 'black',
+    overflow: 'hidden',
+  }, 
+
   body: {
     backgroundColor: 'black',
     overflow: 'hidden',
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: '80px', 
     width: '100%', 
     padding: '20px',
-    overflow: 'hidden', 
+    // overflow: 'hidden', 
 },
 
 FadeAnimations2: {
@@ -66,6 +72,7 @@ FadeAnimations2: {
   fontSize: '30px', 
   width: '50%', 
   padding: '20px', 
+  display: 'inline-block',
   // overflow: 'hidden',
 },
 
