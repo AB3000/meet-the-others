@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
@@ -44,6 +44,7 @@ class App extends Component {
 const styles = StyleSheet.create({
   body: {
     backgroundColor: 'black',
+    overflow: 'hidden',
   }, 
   
   FadeAnimations: {
@@ -53,7 +54,8 @@ const styles = StyleSheet.create({
     color: 'white', 
     fontSize: '80px', 
     width: '100%', 
-    padding: '20px', 
+    padding: '20px',
+    overflow: 'hidden', 
 },
 
 FadeAnimations2: {
@@ -64,6 +66,7 @@ FadeAnimations2: {
   fontSize: '30px', 
   width: '50%', 
   padding: '20px', 
+  // overflow: 'hidden',
 },
 
  div: {
@@ -79,6 +82,7 @@ FadeAnimations2: {
   right: '0',
     
   margin: 'auto',
+  // overflow: 'hidden',
  },
  
  input : {
@@ -89,6 +93,7 @@ FadeAnimations2: {
   border: '1px solid #ccc',
   borderRadius: '4px',
   boxSizing: 'border-box',
+  // overflow: 'hidden',
  
  }, 
 
@@ -102,7 +107,7 @@ FadeAnimations2: {
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
-
+    // overflow: 'hidden',
  },
 
 
