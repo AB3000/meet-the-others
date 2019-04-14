@@ -10,9 +10,10 @@ import styled, { keyframes } from 'styled-components';
 class App extends Component {
   render() {
     return (
-      <body className = {css(styles.body)}>
+    <body className = {css(styles.body)}>
       <p className = {css(styles.FadeAnimations)}> Welcome!</p>
-      <div className = {css(styles.FadeAnimations2)}>
+      <div className = {css(styles.containBlocks)}>
+      <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
                <label for="fname">Username</label>
                <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
@@ -34,6 +35,30 @@ class App extends Component {
              
                <button type="submit" value="Submit"></button>
            </form>
+      </div>
+      <div className = {css(styles.blocks)}>
+             <form action="/action_page.php">
+               <label for="fname">Username</label>
+               <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
+           
+               <label for="first">First Food Item</label>
+               <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder="Your first time!"></input>
+   
+               <label for="second">Second Food Item</label>
+               <input type="text" className = {css(styles.input)} id="second" name="lastname" placeholder="Your second item!"></input>
+   
+               <label for="third">Third Food Item</label>
+               <input type="text" className = {css(styles.input)} id="third" name="lastname" placeholder="Your third item!"></input>
+   
+               <label for="fourth">Fourth Food Item</label>
+               <input type="text" className = {css(styles.input)} id="fourth" name="lastname" placeholder="Your fourth item!"></input>
+   
+               <label for="fifth">Fifth Food Item</label>
+               <input type="text" className = {css(styles.input)} id="fifth" name="lastname" placeholder="Your fifth item!"></input>
+             
+               <button type="submit" value="Submit"></button>
+           </form>
+        </div>
       </div>
    </body>
     );
@@ -60,25 +85,30 @@ const styles = StyleSheet.create({
     color: 'white', 
     fontSize: '80px', 
     width: '100%', 
-    padding: '20px',
-    // overflow: 'hidden', 
+    padding: '10px',
 },
 
-FadeAnimations2: {
+
+
+blocks: {
   animationName: 'fadein',
   animationDuration: '3s',
   textAlign: 'center',
   color: 'white', 
   fontSize: '30px', 
   width: '50%', 
-  padding: '20px', 
-  display: 'inline-block',
-  // overflow: 'hidden',
+  padding: '5px', 
+  borderRadius: '5px',
+  display: 'flex',
+  justifyContent:'space-between',
+  backgroundColor: '#f2f2f2',
+},
+
+containBlocks: {
+  
 },
 
  div: {
-  borderRadius: '5px',
-  backgroundColor: '#f2f2f2',
   width: '75%',
   height: '75%',
 
