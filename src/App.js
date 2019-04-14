@@ -88,24 +88,24 @@ const styles = StyleSheet.create({
     padding: '10px',
 },
 
-
-
 blocks: {
   animationName: 'fadein',
   animationDuration: '3s',
   textAlign: 'center',
   color: 'white', 
   fontSize: '30px', 
-  width: '50%', 
-  padding: '5px', 
+  width: '40%', 
+  padding: '20px', 
   borderRadius: '5px',
-  display: 'flex',
-  justifyContent:'space-between',
   backgroundColor: '#f2f2f2',
 },
 
 containBlocks: {
-  
+  display: 'flex',
+  padding: '20px',
+  justifyContent:'space-between',
+  position: 'absolute',
+  backgroundColor: 'black',
 },
 
  div: {
