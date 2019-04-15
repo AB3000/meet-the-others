@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
+import { inherits } from 'util';
 
 
 
@@ -38,23 +39,11 @@ class App extends Component {
       </div>
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
-               <label for="fname">Username</label>
+               <label for="name">Username</label>
                <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
            
-               <label for="first">First Food Item</label>
-               <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder="Your first time!"></input>
-   
-               <label for="second">Second Food Item</label>
-               <input type="text" className = {css(styles.input)} id="second" name="lastname" placeholder="Your second item!"></input>
-   
-               <label for="third">Third Food Item</label>
-               <input type="text" className = {css(styles.input)} id="third" name="lastname" placeholder="Your third item!"></input>
-   
-               <label for="fourth">Fourth Food Item</label>
-               <input type="text" className = {css(styles.input)} id="fourth" name="lastname" placeholder="Your fourth item!"></input>
-   
-               <label for="fifth">Fifth Food Item</label>
-               <input type="text" className = {css(styles.input)} id="fifth" name="lastname" placeholder="Your fifth item!"></input>
+               <label for="password">Password</label>
+               <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder=""></input>
              
                <button type="submit" value="Submit"></button>
            </form>
@@ -97,6 +86,7 @@ blocks: {
   width: '40%', 
   padding: '20px', 
   borderRadius: '5px',
+  // height: '50vh',
   backgroundColor: '#f2f2f2',
 },
 
@@ -109,8 +99,8 @@ containBlocks: {
 },
 
  div: {
-  width: '75%',
-  height: '75%',
+  // width: '75%',
+  // height: '75%',
 
   position: 'absolute',
   top:'0',
