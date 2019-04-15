@@ -24,7 +24,7 @@ class App extends Component {
                <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
 
                <label for="password" className = {css(styles.label)}>Password</label>
-               <input type="text" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
+               <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
            
                <label for="first" className = {css(styles.label)}>First</label>
                <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder="Your first time!"></input>
@@ -50,7 +50,7 @@ class App extends Component {
                <input type="text" id="fname" name="username" placeholder="username" className = {css(styles.input)}></input>
            
                <label for="password" className = {css(styles.label)}>Password</label>
-               <input type="text" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
+               <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
                <button type="submit" value="Submit"></button>
            </form>
         </div>
