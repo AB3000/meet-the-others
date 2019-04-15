@@ -102,7 +102,7 @@ blocks: {
   color: 'white', 
   fontSize: '30px', 
   width: '40%',
-  height: '70%', 
+  height: '20%', 
   overflow: 'auto', 
   // float: 'left',
   paddingLeft: '20px', 
