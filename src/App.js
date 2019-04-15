@@ -24,10 +24,10 @@ class App extends Component {
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
              <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
-               <label for="fname" className = {css(styles.label)}>Username</label>
+               <label for="fname" className = {css(styles.label)}>Choose a username!</label>
                <input type="text" id="uNameNew" name="username" placeholder="Username" className = {css(styles.input)}></input>
 
-               <label for="password" className = {css(styles.label)}>Password</label>
+               <label for="password" className = {css(styles.label)}>Create a password!</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
            
                <label for="first" className = {css(styles.label)}>First</label>
