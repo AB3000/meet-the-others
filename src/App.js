@@ -51,7 +51,6 @@ class App extends Component {
            
                <label for="password" className = {css(styles.label)}>Password</label>
                <input type="text" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
-             
                <button type="submit" value="Submit"></button>
            </form>
         </div>
@@ -98,10 +97,13 @@ const styles = StyleSheet.create({
 blocks: {
   animationName: 'fadein',
   animationDuration: '3s',
+  display: 'inline-block',
   textAlign: 'center',
   color: 'white', 
   fontSize: '30px', 
-  width: '40%', 
+  width: '40%',
+  height: '70%', 
+  overflow: 'auto', 
   // float: 'left',
   paddingLeft: '20px', 
   paddingRight: '20px', 
