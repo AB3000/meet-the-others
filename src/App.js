@@ -14,13 +14,12 @@ class App extends Component {
     <body className = {css(styles.body)}>
       <p className = {css(styles.FadeAnimations)}> Welcome!</p>
       <div className = {css(styles.containBlocks)}>
-      <div className = {css(styles.blocks)}>
-        <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
-      </div>
-      <div className = {css(styles.blocks)}>
-         <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
-      </div>
-       
+        <div className = {css(styles.blocks)}>
+          <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
+        </div>
+        <div className = {css(styles.blocks)}>
+          <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
+        </div> 
      </div>
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
