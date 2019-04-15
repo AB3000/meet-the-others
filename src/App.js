@@ -16,22 +16,22 @@ class App extends Component {
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
-               <label for="fname">Username</label>
+               <label for="fname" className = {css(styles.label)}>Username</label>
                <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
            
-               <label for="first">First Food Item</label>
+               <label for="first" className = {css(styles.label)}>First Food Item</label>
                <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder="Your first time!"></input>
    
-               <label for="second">Second Food Item</label>
+               <label for="second" className = {css(styles.label)}>Second Food Item</label>
                <input type="text" className = {css(styles.input)} id="second" name="lastname" placeholder="Your second item!"></input>
    
-               <label for="third">Third Food Item</label>
+               <label for="third" className = {css(styles.label)}>Third Food Item</label>
                <input type="text" className = {css(styles.input)} id="third" name="lastname" placeholder="Your third item!"></input>
    
-               <label for="fourth">Fourth Food Item</label>
+               <label for="fourth" className = {css(styles.label)}>Fourth Food Item</label>
                <input type="text" className = {css(styles.input)} id="fourth" name="lastname" placeholder="Your fourth item!"></input>
    
-               <label for="fifth">Fifth Food Item</label>
+               <label for="fifth" className = {css(styles.label)}>Fifth Food Item</label>
                <input type="text" className = {css(styles.input)} id="fifth" name="lastname" placeholder="Your fifth item!"></input>
              
                <button type="submit" value="Submit"></button>
@@ -39,11 +39,11 @@ class App extends Component {
       </div>
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
-               <label for="name">Username</label>
-               <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
+               <label for="name"className = {css(styles.label)}>Username</label>
+               <input type="text" id="fname" name="username" placeholder="username" className = {css(styles.input)}></input>
            
-               <label for="password">Password</label>
-               <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder=""></input>
+               <label for="password" className = {css(styles.label)}>Password</label>
+               <input type="text" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
              
                <button type="submit" value="Submit"></button>
            </form>
@@ -135,6 +135,11 @@ containBlocks: {
     borderRadius: '4px',
     cursor: 'pointer',
     // overflow: 'hidden',
+ },
+
+  label: {
+   color: 'black', 
+   fontSize: '30px',
  },
 
 
