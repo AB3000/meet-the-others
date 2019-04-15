@@ -102,7 +102,7 @@ blocks: {
 
 containBlocks: {
   display: 'flex',
-  padding: '20px',
+  padding: '30px',
   justifyContent:'space-between',
   position: 'absolute',
   backgroundColor: 'black',
@@ -124,7 +124,7 @@ containBlocks: {
  
  input : {
   width: '100%',
-  padding: '12px 20px',
+  padding: '20px',
   margin: '8px 0',
   display: 'inline-block',
   border: '1px solid #ccc',
@@ -139,7 +139,7 @@ containBlocks: {
     width: '100%',
     backgroundColor: '#4CAF50',
     color: 'white',
-    padding: '14px 20px',
+    padding: '10px',
     margin: '8px 0',
     border: 'none',
     borderRadius: '4px',
