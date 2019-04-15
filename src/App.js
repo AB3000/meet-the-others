@@ -22,7 +22,7 @@ class App extends Component {
 
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
-             <form action="/action_page.php">
+             <form action="/chat.js">
              <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
                <label for="fname" className = {css(styles.label)}>Choose a username!</label>
                <input type="text" id="uNameNew" name="username" placeholder="Username" className = {css(styles.input)}></input>
@@ -42,6 +42,13 @@ class App extends Component {
                <label for="fourth" className = {css(styles.label)}>Fourth</label>
                <input type="text" className = {css(styles.input)} id="fourth" name="fourth" placeholder="Your fourth item!"></input>
    
+
+               <label for="country" className = {css(styles.label)}>Country</label>
+                  <select id="country" name="country">
+                       <option value="australia">Australia</option>
+                              <option value="canada">Canada</option>
+                              <option value="usa">USA</option>
+                 </select>
                <label for="fifth" className = {css(styles.label)}>Fifth</label>
                <input type="text" className = {css(styles.input)} id="fifth" name="fifth" placeholder="Your fifth item!"></input>
              
@@ -49,7 +56,7 @@ class App extends Component {
            </form>
       </div>
       <div className = {css(styles.blocks)}>
-             <form action="/action_page.php">
+             <form action="/char.js">
                <label for="name" className = {css(styles.label)}>Username</label>
                <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)}></input>
            
