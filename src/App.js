@@ -15,23 +15,36 @@ class App extends Component {
       <p className = {css(styles.FadeAnimations)}> Welcome!</p>
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
+        <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
+      </div>
+      <div className = {css(styles.blocks)}>
+         <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
+      </div>
+       
+     </div>
+      <div className = {css(styles.containBlocks)}>
+      <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
+             <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
                <label for="fname" className = {css(styles.label)}>Username</label>
                <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
+
+               <label for="password" className = {css(styles.label)}>Password</label>
+               <input type="text" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
            
-               <label for="first" className = {css(styles.label)}>First Food Item</label>
+               <label for="first" className = {css(styles.label)}>First</label>
                <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder="Your first time!"></input>
    
-               <label for="second" className = {css(styles.label)}>Second Food Item</label>
+               <label for="second" className = {css(styles.label)}>Second</label>
                <input type="text" className = {css(styles.input)} id="second" name="lastname" placeholder="Your second item!"></input>
    
-               <label for="third" className = {css(styles.label)}>Third Food Item</label>
+               <label for="third" className = {css(styles.label)}>Third</label>
                <input type="text" className = {css(styles.input)} id="third" name="lastname" placeholder="Your third item!"></input>
    
-               <label for="fourth" className = {css(styles.label)}>Fourth Food Item</label>
+               <label for="fourth" className = {css(styles.label)}>Fourth</label>
                <input type="text" className = {css(styles.input)} id="fourth" name="lastname" placeholder="Your fourth item!"></input>
    
-               <label for="fifth" className = {css(styles.label)}>Fifth Food Item</label>
+               <label for="fifth" className = {css(styles.label)}>Fifth</label>
                <input type="text" className = {css(styles.input)} id="fifth" name="lastname" placeholder="Your fifth item!"></input>
              
                <button type="submit" value="Submit"></button>
@@ -75,6 +88,15 @@ const styles = StyleSheet.create({
     fontSize: '80px', 
     width: '100%', 
     padding: '10px',
+ },
+
+ FadeAnimations2: {
+  animationName: 'fadein',
+  animationDuration: '5s',
+  textAlign: 'center',
+  color: 'white', 
+  fontSize: '30px', 
+  // width: '100%', 
 },
 
 blocks: {
@@ -140,6 +162,7 @@ containBlocks: {
   label: {
    color: 'black', 
    fontSize: '30px',
+   padding: '0px',
  },
 
 
