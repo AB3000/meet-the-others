@@ -5,8 +5,6 @@ import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 
-
-
   
 class App extends Component {
   render() {
@@ -14,13 +12,10 @@ class App extends Component {
     <body className = {css(styles.body)}>
       <p className = {css(styles.FadeAnimations)}> Welcome!</p>
       <div className = {css(styles.containBlocks)}>
-        <div className = {css(styles.blocks)}>
           <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
-        </div>
-        <div className = {css(styles.blocks)}>
           <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
-        </div> 
      </div>
+
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
@@ -95,7 +90,7 @@ const styles = StyleSheet.create({
   textAlign: 'center',
   color: 'white', 
   fontSize: '30px', 
-  // width: '100%', 
+  width: '100%', 
 },
 
 blocks: {
@@ -115,7 +110,7 @@ containBlocks: {
   display: 'flex',
   padding: '30px',
   justifyContent:'space-between',
-  position: 'absolute',
+  position: 'relative',
   backgroundColor: 'black',
 },
 
