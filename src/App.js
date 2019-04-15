@@ -5,7 +5,9 @@ import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 
-  
+var map3 = new Map([["nature", ["parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
+            ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
+            ["indoors", ["movies/TV shows", "board games", "watching random videos", "forums", "sleeping", "reading", "cooking", "personal projects"]]]); 
 class App extends Component {
   render() {
     return (
