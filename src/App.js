@@ -5,9 +5,11 @@ import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 
-var map3 = new Map([["nature", ["parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
+var map3 = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
             ["indoors", ["movies/TV shows", "board games", "watching random videos", "forums", "sleeping", "reading", "cooking", "personal projects"]]]); 
+
+
 class App extends Component {
   render() {
     return (
@@ -23,25 +25,25 @@ class App extends Component {
              <form action="/action_page.php">
              <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
                <label for="fname" className = {css(styles.label)}>Username</label>
-               <input type="text" id="fname" name="username" placeholder="Username" className = {css(styles.input)}></input>
+               <input type="text" id="uNameNew" name="username" placeholder="Username" className = {css(styles.input)}></input>
 
                <label for="password" className = {css(styles.label)}>Password</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
            
                <label for="first" className = {css(styles.label)}>First</label>
-               <input type="text" className = {css(styles.input)} id="first" name="lastname" placeholder="Your first time!"></input>
+               <input type="text" className = {css(styles.input)} id="first" name="first" placeholder="Your first time!"></input>
    
                <label for="second" className = {css(styles.label)}>Second</label>
-               <input type="text" className = {css(styles.input)} id="second" name="lastname" placeholder="Your second item!"></input>
+               <input type="text" className = {css(styles.input)} id="second" name="second" placeholder="Your second item!"></input>
    
                <label for="third" className = {css(styles.label)}>Third</label>
-               <input type="text" className = {css(styles.input)} id="third" name="lastname" placeholder="Your third item!"></input>
+               <input type="text" className = {css(styles.input)} id="third" name="third" placeholder="Your third item!"></input>
    
                <label for="fourth" className = {css(styles.label)}>Fourth</label>
-               <input type="text" className = {css(styles.input)} id="fourth" name="lastname" placeholder="Your fourth item!"></input>
+               <input type="text" className = {css(styles.input)} id="fourth" name="fourth" placeholder="Your fourth item!"></input>
    
                <label for="fifth" className = {css(styles.label)}>Fifth</label>
-               <input type="text" className = {css(styles.input)} id="fifth" name="lastname" placeholder="Your fifth item!"></input>
+               <input type="text" className = {css(styles.input)} id="fifth" name="fifth" placeholder="Your fifth item!"></input>
              
                <button type="submit" value="Submit"></button>
            </form>
@@ -49,7 +51,7 @@ class App extends Component {
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
                <label for="name" className = {css(styles.label)}>Username</label>
-               <input type="text" id="fname" name="username" placeholder="username" className = {css(styles.input)}></input>
+               <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)}></input>
            
                <label for="password" className = {css(styles.label)}>Password</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
