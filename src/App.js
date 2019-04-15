@@ -22,41 +22,56 @@ class App extends Component {
 
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
-             <form action="/chat.js">
+             <form action="/Chat.js">
              <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
                <label for="fname" className = {css(styles.label)}>Choose a username!</label>
                <input type="text" id="uNameNew" name="username" placeholder="Username" className = {css(styles.input)}></input>
 
                <label for="password" className = {css(styles.label)}>Create a password!</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
-           
-               <label for="first" className = {css(styles.label)}>First</label>
-               <input type="text" className = {css(styles.input)} id="first" name="first" placeholder="Your first time!"></input>
-   
-               <label for="second" className = {css(styles.label)}>Second</label>
-               <input type="text" className = {css(styles.input)} id="second" name="second" placeholder="Your second item!"></input>
-   
-               <label for="third" className = {css(styles.label)}>Third</label>
-               <input type="text" className = {css(styles.input)} id="third" name="third" placeholder="Your third item!"></input>
-   
-               <label for="fourth" className = {css(styles.label)}>Fourth</label>
-               <input type="text" className = {css(styles.input)} id="fourth" name="fourth" placeholder="Your fourth item!"></input>
    
 
-               <label for="country" className = {css(styles.label)}>Country</label>
-                  <select id="country" name="country">
+               <label for="first" className = {css(styles.label)}>First</label>
+                  <select id="first" name="first" className = {css(styles.input)}>
                        <option value="australia">Australia</option>
                               <option value="canada">Canada</option>
                               <option value="usa">USA</option>
-                 </select>
-               <label for="fifth" className = {css(styles.label)}>Fifth</label>
-               <input type="text" className = {css(styles.input)} id="fifth" name="fifth" placeholder="Your fifth item!"></input>
+                  </select>
+
+              <label for="second" className = {css(styles.label)}>Second</label>
+                  <select id="second" name="second" className = {css(styles.input)}>
+                       <option value="australia">Australia</option>
+                              <option value="canada">Canada</option>
+                              <option value="usa">USA</option>
+                  </select>
+              <label for="third" className = {css(styles.label)}>Third</label>
+                  <select id="third" name="third" className = {css(styles.input)}>
+                       <option value="australia">Australia</option>
+                              <option value="canada">Canada</option>
+                              <option value="usa">USA</option>
+                  </select>
+
+              <label for="fourth" className = {css(styles.label)}>Fourth</label>
+                  <select id="fourth" name="fourth" className = {css(styles.input)}>
+                       <option value="australia">Australia</option>
+                              <option value="canada">Canada</option>
+                              <option value="usa">USA</option>
+                  </select>
+
+              <label for="fifth" className = {css(styles.label)}>Fifth</label>
+                  <select id="fifth" name="fifth" className = {css(styles.input)} >
+                       <option value="australia">Australia</option>
+                              <option value="canada">Canada</option>
+                              <option value="usa">USA</option>
+                  </select>
+               {/* <label for="fifth" className = {css(styles.label)}>Fifth</label>
+               <input type="text" className = {css(styles.input)} id="fifth" name="fifth" placeholder="Your fifth item!"></input> */}
              
                <button type="submit" value="Submit"></button>
            </form>
       </div>
       <div className = {css(styles.blocks)}>
-             <form action="/char.js">
+             <form action="/Chat.js">
                <label for="name" className = {css(styles.label)}>Username</label>
                <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)}></input>
            
@@ -67,6 +82,7 @@ class App extends Component {
         </div>
       </div>
    </body>
+   
     );
   }
 }
