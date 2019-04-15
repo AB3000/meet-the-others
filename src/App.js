@@ -46,7 +46,7 @@ class App extends Component {
       </div>
       <div className = {css(styles.blocks)}>
              <form action="/action_page.php">
-               <label for="name"className = {css(styles.label)}>Username</label>
+               <label for="name" className = {css(styles.label)}>Username</label>
                <input type="text" id="fname" name="username" placeholder="username" className = {css(styles.input)}></input>
            
                <label for="password" className = {css(styles.label)}>Password</label>
@@ -90,7 +90,9 @@ const styles = StyleSheet.create({
   textAlign: 'center',
   color: 'white', 
   fontSize: '30px', 
-  width: '100%', 
+  paddingLeft: '20px', 
+  paddingRight: '20px', 
+  width: '40%', 
 },
 
 blocks: {
@@ -100,7 +102,8 @@ blocks: {
   color: 'white', 
   fontSize: '30px', 
   width: '40%', 
-  padding: '20px', 
+  paddingLeft: '20px', 
+  paddingRight: '20px', 
   borderRadius: '5px',
   // height: '50vh',
   backgroundColor: '#f2f2f2',
@@ -108,7 +111,9 @@ blocks: {
 
 containBlocks: {
   display: 'flex',
-  padding: '30px',
+  paddingLeft: '30px',
+  paddingRight: '30px',
+  paddingBottom: '30px',
   justifyContent:'space-between',
   position: 'relative',
   backgroundColor: 'black',
@@ -140,7 +145,6 @@ containBlocks: {
  
  }, 
 
-
  button: {
     width: '100%',
     backgroundColor: '#4CAF50',
@@ -156,7 +160,7 @@ containBlocks: {
   label: {
    color: 'black', 
    fontSize: '30px',
-   padding: '0px',
+   padding: '20px',
  },
 
 
