@@ -218,5 +218,5 @@ containBlocks: {
 
 
 })
-
+ReactDOM.render(app, document.getElementById('../src/App.js'));
 export default App;
