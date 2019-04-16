@@ -7,24 +7,28 @@ import { inherits } from 'util';
 
 var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
-            ["indoors", ["movies/TV shows", "board games", "watching random videos", "forums", "sleeping", "reading", "cooking", "personal projects"]]]); 
+            ["indoors", ["movies/TV shows", "board games", "watching random videos", "forums", "sleeping", "reading", "cooking", "personal projects", "Conversation Games (i.e. Never Have I ever, Truth or Dare)"]]]); 
 
-console.log(list.get("nature"));
+var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fill
+// console.log(list.get("nature"));
 window.onload = function () {
-  var select = document.getElementById("first");
-  console.log("select is " + select);
-  var options = list.get("nature");
+
+for(var j  = 0; j < IDs.length; j++){ //outer loop for 5 options
+  console.log("THE J IS " + IDs[j]);
+  var select = document.getElementById(IDs[j]);
+  // console.log("select is " + select);
+  var options = (list.get("nature").concat(list.get("city"))).concat(list.get("indoors"));
   console.log(options + " and the length is " + options.length);
-  
   for(var i = 0; i < options.length; i++) {
       var opt = options[i];
-      console.log("options at i is " + options[i]);
-      var el = document.createElement("option");
-      el.textContent = opt;
-      el.value = opt;
-      console.log("el is " + el.value);
-      select.appendChild(el);
+      // console.log("options at i is " + options[i]);
+      var element = document.createElement("option");
+      element.textContent = opt;
+      element.value = opt;
+      // console.log("el is " + el.value);
+      select.appendChild(element);
   }
+}
 };
 
 
@@ -55,14 +59,26 @@ class App extends Component {
                   <select id="first" className = {css(styles.input)}>
                        <option value="default">parks</option>
                   </select>
-               
 
-              {/* <label for="second" className = {css(styles.label)}>Second</label>
-                  <select id="second" name="second" className = {css(styles.input)}>
-                       <option value="australia">Australia</option>
-                              <option value="canada">Canada</option>
-                              <option value="usa">USA</option>
-                </select>*/}
+              <label htmlFor="second" className = {css(styles.label)}>Second</label> 
+                  <select id="second" className = {css(styles.input)}>
+                       <option value="default">lounges</option>
+                  </select>
+
+              <label htmlFor="third" className = {css(styles.label)}>Third</label> 
+                  <select id="third" className = {css(styles.input)}>
+                       <option value="default">watching random videos</option>
+                  </select>
+
+              <label htmlFor="fourth" className = {css(styles.label)}>Fourth</label> 
+                  <select id="fourth" className = {css(styles.input)}>
+                       <option value="default">biking</option>
+                  </select>
+
+              <label htmlFor="fifth" className = {css(styles.label)}>Fifth</label> 
+                  <select id="fifth" className = {css(styles.input)}>
+                       <option value="default">biking</option>
+                  </select>
              
                <button type="submit" value="Submit"></button>
            </form>
