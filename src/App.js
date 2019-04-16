@@ -5,7 +5,7 @@ import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
-
+import firebase from './firebase';
 
 var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
@@ -218,5 +218,5 @@ containBlocks: {
 
 
 })
-ReactDOM.render(app, document.getElementById('../src/App.js'));
+//ReactDOM.render(app, document.getElementById('../src/App.js'));
 export default App;
