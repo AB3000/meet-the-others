@@ -4,6 +4,8 @@ import './App.css';
 import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
+import { withRouter } from 'react-router-dom';
+
 
 var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
@@ -80,7 +82,8 @@ class App extends Component {
                        <option value="default">biking</option>
                   </select>
              
-               <button type="submit" value="Submit"></button>
+                 
+               {/* <button type="submit" value="Submit"></button> */}
            </form>
       </div>
       <div className = {css(styles.blocks)}>
