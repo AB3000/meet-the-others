@@ -5,7 +5,29 @@ import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
-import firebase from './firebase';
+import firebase from './firebase'; // use this when database is implemented
+
+/* 
+// experimental db stuff
+
+var db = firebase.database()
+
+// current structure:
+//   username  (string)
+//   password  (string)
+//   interests (string[5])
+var createUser = (username, password, interests) => {
+  var lukepassword = db.ref('users/lukecheng/password')
+  lukepassword.on('value', (p) => {
+    window.alert(p)
+  })
+}
+
+var lukepassword = firebase.database().ref('users/lukecheng/password')
+lukepassword.on('value', (p) => {
+  window.alert(p)
+})
+*/
 
 var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
@@ -39,7 +61,7 @@ class App extends Component {
   render() {
     return (
       // console.log("djsakdjslakdjlaksjl"),
-    <body className = {css(styles.body)}>
+    <div className = {css(styles.body)}>
       <p className = {css(styles.FadeAnimations)}> Welcome!</p>
       <div className = {css(styles.containBlocks)}>
           <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
@@ -59,27 +81,22 @@ class App extends Component {
 
                <label htmlFor="first" className = {css(styles.label)}>First</label> 
                   <select id="first" className = {css(styles.input)}>
-                       <option value="default">parks</option>
                   </select>
 
               <label htmlFor="second" className = {css(styles.label)}>Second</label> 
                   <select id="second" className = {css(styles.input)}>
-                       <option value="default">lounges</option>
                   </select>
 
               <label htmlFor="third" className = {css(styles.label)}>Third</label> 
                   <select id="third" className = {css(styles.input)}>
-                       <option value="default">watching random videos</option>
                   </select>
 
               <label htmlFor="fourth" className = {css(styles.label)}>Fourth</label> 
                   <select id="fourth" className = {css(styles.input)}>
-                       <option value="default">biking</option>
                   </select>
 
               <label htmlFor="fifth" className = {css(styles.label)}>Fifth</label> 
                   <select id="fifth" className = {css(styles.input)}>
-                       <option value="default">biking</option>
                   </select>
              
                  
@@ -97,7 +114,7 @@ class App extends Component {
            </form>
         </div>
       </div>  
-   </body> 
+   </div> 
     );
 
     
