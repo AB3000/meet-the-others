@@ -28,6 +28,7 @@ var createUser = (username, password, interests) => {
 var lukepassword = firebase.database().ref('users/lukecheng/password')
 lukepassword.on('value', (p) => {
   window.alert(p)
+  console.log("This works!")
 })
 /*SIGN IN*/
 //We will have to get this from the data base itself, and set vars accordingly and then compare with the input some how
@@ -46,6 +47,16 @@ aut.signOut().then(function(){
 
 }).catch(function(error){
   console.log(error);
+})
+/*CHECK IF USER IS SIGNED IN */
+aut.onAuthStateChanged(function(user){
+  if(user){
+    //Return true if user is signed in
+    return true;
+  }else{
+    //Return false
+    return false;
+  }
 })
 //*/ //End of the comments
 
@@ -132,6 +143,7 @@ class App extends Component {
                <label htmlFor="password" className = {css(styles.label)}>Password</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
                <button type="submit" value="Submit"></button>
+               
            </form>
         </div>
       </div>  
