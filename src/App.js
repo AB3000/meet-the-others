@@ -11,7 +11,9 @@ import firebase from './firebase'; // use this when database is implemented
 // experimental db stuff
 ///* //Start of comments
 var db = firebase.database()
-
+var aut = firebase.auth()
+var setUsername = "Username";
+var password = "Password";
 // current structure:
 //   username  (string)
 //   password  (string)
@@ -27,15 +29,23 @@ var lukepassword = firebase.database().ref('users/lukecheng/password')
 lukepassword.on('value', (p) => {
   window.alert(p)
 })
+/*SIGN IN*/
 //We will have to get this from the data base itself, and set vars accordingly and then compare with the input some how
-var setUsername = "Username";
-var password = "Password";
+
 //check if passwords match
-firebase.auth().signInWithEmailAndPassword(setUsername, password).catch(function(error){
+aut.signInWithEmailAndPassword(setUsername, password).catch(function(error){
   var errorCode = error.code;
   var errorMessage = error.message;
   console.log(errorCode);
   console.log(errorMessage);
+})
+/*SIGN OUT*/
+aut.signOut().then(function(){
+  //Signout successful
+  console.log("Signed out!");
+
+}).catch(function(error){
+  console.log(error);
 })
 //*/ //End of the comments
 
