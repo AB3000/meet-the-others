@@ -7,9 +7,9 @@ import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
 import firebase from './firebase'; // use this when database is implemented
 
-/* 
-// experimental db stuff
 
+// experimental db stuff
+///* //Start of comments
 var db = firebase.database()
 
 // current structure:
@@ -27,7 +27,17 @@ var lukepassword = firebase.database().ref('users/lukecheng/password')
 lukepassword.on('value', (p) => {
   window.alert(p)
 })
-*/
+//We will have to get this from the data base itself, and set vars accordingly and then compare with the input some how
+var setUsername = "Username";
+var password = "Password";
+//check if passwords match
+firebase.auth().signInWithEmailAndPassword(setUsername, password).catch(function(error){
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log(errorCode);
+  console.log(errorMessage);
+})
+//*/ //End of the comments
 
 var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
@@ -61,6 +71,7 @@ class App extends Component {
   render() {
     return (
       // console.log("djsakdjslakdjlaksjl"),
+    
     <div className = {css(styles.body)}>
       <p className = {css(styles.FadeAnimations)}> Welcome!</p>
       <div className = {css(styles.containBlocks)}>
