@@ -5,15 +5,18 @@ import {StyleSheet, css} from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, route } from 'react-router-dom';
 import firebase from './firebase'; // use this when database is implemented
-
-
+import Chat from "./Chat";
+import login from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
+import Signup from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
 // experimental db stuff
 ///* //Start of comments
 var db = firebase.database()
 var aut = firebase.auth()
 var setUsername = "Username";
 var password = "Password";
+
 // current structure:
 //   username  (string)
 //   password  (string)
@@ -113,25 +116,33 @@ class App extends Component {
 
                <label htmlFor="first" className = {css(styles.label)}>First</label> 
                   <select id="first" className = {css(styles.input)}>
+                  <option value="default"> </option>
                   </select>
 
               <label htmlFor="second" className = {css(styles.label)}>Second</label> 
                   <select id="second" className = {css(styles.input)}>
+                  <option value="default"> </option>
                   </select>
 
               <label htmlFor="third" className = {css(styles.label)}>Third</label> 
                   <select id="third" className = {css(styles.input)}>
+                  <option value="default"> </option>
                   </select>
 
               <label htmlFor="fourth" className = {css(styles.label)}>Fourth</label> 
                   <select id="fourth" className = {css(styles.input)}>
+                  <option value="default"> </option>
                   </select>
 
               <label htmlFor="fifth" className = {css(styles.label)}>Fifth</label> 
                   <select id="fifth" className = {css(styles.input)}>
+                  <option value="default"> </option>
                   </select>
-             
-                 
+                 <Router>
+                   <div>
+
+                   </div>
+                 </Router>
                {/* <button type="submit" value="Submit"></button> */}
            </form>
       </div>
@@ -142,14 +153,18 @@ class App extends Component {
            
                <label htmlFor="password" className = {css(styles.label)}>Password</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
-               <button type="submit" value="Submit"></button>
-               
+               <button type="submit" value="Submit">Login</button>
            </form>
+           <Router>
+             <div>
+               <Router exact path= "/Chat" Component = {Chat}/>
+             </div>
+           </Router>
         </div>
       </div>  
    </div> 
     );
-
+  
     
 
       
