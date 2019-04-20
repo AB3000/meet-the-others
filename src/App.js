@@ -149,10 +149,10 @@ class App extends Component {
       <div className = {css(styles.blocks)}>
              <form action="/Chat.js">
                <label htmlFor="name" className = {css(styles.label)}>Username</label>
-               <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)}></input>
+               <input type="text" id="uNameLogin" name="username" type="username" placeholder="username" className = {css(styles.input)}></input>
            
                <label htmlFor="password" className = {css(styles.label)}>Password</label>
-               <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
+               <input type="password" className = {css(styles.input)} id="password" name="password" type="password" placeholder="password"></input>
                <button type="submit" value="Submit">Login</button>
            </form>
            <Router>
