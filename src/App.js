@@ -128,7 +128,7 @@ class App extends Component {
             </form>
             <Router>
               <div>
-                <Router exact path="/Chat" component={Chat} />
+                <Router exact path="./Chat" component={Chat} />
               </div>
             </Router>
           </div>
