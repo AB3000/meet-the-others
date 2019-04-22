@@ -10,6 +10,7 @@ import firebase from './firebase'; // use this when database is implemented
 import Chat from "./Chat";
 import login from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
 import Signup from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
+import PrivateRoute from "./PrivateRoute";
 // experimental db stuff
 ///* //Start of comments
 var db = firebase.database()
@@ -70,7 +71,7 @@ var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fil
 var options = (list.get("nature").concat(list.get("city"))).concat(list.get("indoors"))
 
 class App extends Component {
-
+  state = {loading: true, authenticated: false, user: null}
   renderOptions() {
     return options.map((o) => (
       <option key={o} value={o}>{o}</option>
@@ -107,7 +108,7 @@ class App extends Component {
 
               <label htmlFor="password" className={css(styles.label)}>Create a password!</label>
               <input type="password" className={css(styles.input)} id="password" name="password" placeholder="password"></input>
-
+              <button type="submit" value="Submit"></button>
               {this.renderSelects()}
               <Router>
                 <div>
@@ -128,6 +129,12 @@ class App extends Component {
             </form>
             <Router>
               <div>
+                <PrivateRoute
+                  exact
+                  path="./login"
+                  component={PrivateRoute}
+                  authenticated={this.state.authenticated}
+                />
                 <Router exact path="./Chat" component={Chat} />
               </div>
             </Router>
@@ -135,13 +142,7 @@ class App extends Component {
         </div>
       </div>
     );
-
-
-
-
   }
-
-
 }
 
 
