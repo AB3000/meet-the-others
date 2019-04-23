@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import {StyleSheet, css} from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite';
 import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import firebase from './firebase'; // use this when database is implemented
+import Chat from "./Chat";
+import login from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
+import Signup from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
+import PrivateRoute from "./PrivateRoute";
 
 
 // experimental db stuff
@@ -87,6 +92,23 @@ class App extends Component {
     console.log(this.state)
     this.props.history.push("/Chat");
   }
+  renderOptions() {
+    return options.map((o) => (
+      <option key={o} value={o}>{o}</option>
+    ))
+  }
+
+  renderSelects() {
+    return IDs.map((id) => (
+      <div key={id}>
+        <label htmlFor={id} className={css(styles.label)}>{id}</label>
+        <select id={id} className={css(styles.input)}>
+          <option defaultValue disabled>Please select an option: </option>
+          {this.renderOptions()}
+        </select>
+      </div>
+    ))
+  }
 
 
   render() {
@@ -152,6 +174,11 @@ class App extends Component {
              
                  
                <button type="submit" value="Submit" onClick = {this.handleSubmit}></button>
+               <Router>
+                <div>
+
+                </div>
+              </Router>
            </form>
       </div>
       <div className = {css(styles.blocks)}>
@@ -162,6 +189,17 @@ class App extends Component {
                <label htmlFor="password" className = {css(styles.label)}>Password</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
                <button type="submit" value="Submit"></button>
+               <Router>
+                 <div>
+                 <PrivateRoute
+                  exact
+                  path="./login"
+                  component={PrivateRoute}
+                  authenticated={this.state.authenticated}
+                />
+                <Router exact path="./Chat" component={Chat} />
+                 </div>
+               </Router>
            </form>
         </div>
       </div>  
