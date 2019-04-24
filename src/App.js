@@ -87,14 +87,16 @@ function name() {
    } else if (indoorsCount >= 3){//indoors is the most
 
    } else { //all other cases
-      if(cityCount == natureCount){
+      if(cityCount == natureCount && cityCount >= indoorsCount){
+ 
+      } else if (cityCount == indoorsCount && cityCount >= natureCount){
 
-      } else if (cityCount == indoorsCount){
+      } else if(natureCount == indoorsCount && natureCount >= cityCount){
 
-      } else if(natureCount == indoorsCount){
-        
+      } else { //all three are randomly scattered (not gonna happen)
+
       }
-        
+      
    }
  
 } 
