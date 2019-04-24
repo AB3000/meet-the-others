@@ -8,9 +8,9 @@ import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import firebase from './firebase'; // use this when database is implemented
 import Chat from "./Chat";
-import login from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
-import Signup from "./App";//TODO: You will need to remove this and have it reference the game that you guys are making
+import login from "./App";
 import PrivateRoute from "./PrivateRoute";
+import { app } from 'firebase';
 
 
 // experimental db stuff
@@ -116,7 +116,34 @@ class App extends Component {
       </div>
     ))
   }
+  handleSignIn = async event => {
+    event.preventDefault();
+    const {username, password} = event.target.elements
+    try {
+      const user = await login.auth.signInWithEmailAndPassword(username.value, password.value)
+      this.props.history.push("/");
+    }catch (error){
+      alert(error)
+    };
+  }
 
+  componentWillMount() {
+    aut.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false
+        });
+      }
+    });
+  }
 
   render() {
     return (
@@ -130,7 +157,7 @@ class App extends Component {
 
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
-             <form action>
+             <form action="/Chat">
              <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
                <label htmlFor="fname" className = {css(styles.label)}>Choose a username!</label>
                <input type="text" id="username" name="username" placeholder="Username" className = {css(styles.input)} onChange = {this.handleSelect}></input>
@@ -180,7 +207,7 @@ class App extends Component {
                   </select>
              
                  
-               <button type="submit" value="Submit" onClick = {this.handleSubmit}></button>
+               <button type="submit" value="Submit" onClick = {this.handleSubmit}> Submit</button>
                <Router>
                 <div>
 
@@ -195,32 +222,20 @@ class App extends Component {
            
                <label htmlFor="password" className = {css(styles.label)}>Password</label>
                <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
-               <button type="submit" value="Submit"></button>
-               <Router>
+               <button type="submit" value="Submit" onClick = {this.handleSignIn}> Submit</button>
+               <Route>
                  <div>
-                 <PrivateRoute
-                  exact
-                  path="./login"
-                  component={PrivateRoute}
-                  authenticated={this.state.authenticated}
-                />
-                <Router exact path="./Chat" component={Chat} />
                  </div>
-               </Router>
+               </Route>
            </form>
         </div>
       </div>  
    </div> 
     );
-
-    
-
-      
   }
 
   
 }
-
 
 
 
