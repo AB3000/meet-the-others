@@ -30,8 +30,6 @@ var createUser = (username, password, interests) => {
   })
 }
 
-
-
 var lukepassword = firebase.database().ref('users/lukecheng/password')
 lukepassword.on('value', (p) => {
   window.alert(p)
@@ -66,12 +64,36 @@ var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fil
 // console.log(list.get("nature"));
 
 function name() {
-    //  console.log(document.getElementById("first").value + " jdslakdjksla jdskaljdlskajdlkas");
-    
-}
+    var chosenOptions = [document.getElementById("first").value, document.getElementById("second").value
+  , document.getElementById("third").value, document.getElementById("fourth").value, 
+  document.getElementById("fifth").value]
+   var natureCount, cityCount, indoorsCount;
+   console.log(list.get("nature"));
+   for(var i = 0; i < chosenOptions.length; i++){
+       if(list.get("nature").indexOf(chosenOptions[i]) >= 0){
+           natureCount++;
+       } else if (list.get("city").indexOf(chosenOptions[i]) >= 0){
+           cityCount++;
+       } else { //indoors
+           indoorsCount++;
+       }
+   }
 
 
- // console.log("jdksaljdlas");
+   if(natureCount >= 3){//nature is the most
+
+   } else if (cityCount >= 3){//city is the most
+
+   } else if (indoorsCount >= 3){//indoors is the most
+
+   } else {
+
+   }
+ 
+} 
+
+
+
 class App extends Component {
 
   constructor(props) {
@@ -89,6 +111,7 @@ class App extends Component {
 
   
   handleSelect = (event) => {
+    name();
     console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({[event.target.id]: event.target.value});
   }

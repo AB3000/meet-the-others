@@ -24,7 +24,6 @@ function Wrapper(props) {
             <Route exact path="/Chat" render={(props) =>
                 <Chat history={history} data={data} />   
             }/>
-
         </Router>
     )
 }
