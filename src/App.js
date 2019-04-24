@@ -64,6 +64,7 @@ var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fil
 var roomName = "nature";
 // console.log(list.get("nature"));
 
+//determines the roomname of the room the user will be redirected to 
 function name() {
     var chosenOptions = [document.getElementById("first").value, document.getElementById("second").value
   , document.getElementById("third").value, document.getElementById("fourth").value, 
@@ -107,6 +108,14 @@ function name() {
               roomName = "indoors";
           }
       } else { //all three are randomly scattered (not gonna happen)
+          var r = Math.floor(Math.random() * 3); //generates a number from 0 (inclusive) to 2 (inclusive)
+          if (r == 0){
+              roomName = "nature";
+          } else  if(r == 1) { 
+              roomName = "indoors";
+          } else {
+              roomName = "city";
+          }
 
       }
       
