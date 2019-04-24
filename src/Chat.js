@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
+import App from './App'
 
 class Chat extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class Chat extends Component {
       messages: [],
     }
   }
-
+  
+  
 //   componentDidMount() {
 //     this.syncMessages()
 //   }
@@ -57,6 +59,7 @@ class Chat extends Component {
   }
 
   render() {
+    //console.log("room is " )
     return (
       <div className="Chat" style={styles}>
         {/* <ChatHeader

@@ -143,7 +143,7 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state)
-    name();
+    name(); //get the roomname user will be assigned to
     this.props.history.push("/Chat");
   }
   renderOptions() {
@@ -196,7 +196,7 @@ class App extends Component {
     return (
     
     <div className = {css(styles.body)}>
-      <p className = {css(styles.FadeAnimations)}> Welcome!</p>
+      {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
       <div className = {css(styles.containBlocks)}>
           <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
           <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
