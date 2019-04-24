@@ -61,13 +61,14 @@ var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising"
   var options = (list.get("nature").concat(list.get("city"))).concat(list.get("indoors"));
 
 var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fill
+var roomName = "nature";
 // console.log(list.get("nature"));
 
 function name() {
     var chosenOptions = [document.getElementById("first").value, document.getElementById("second").value
   , document.getElementById("third").value, document.getElementById("fourth").value, 
   document.getElementById("fifth").value]
-   var natureCount, cityCount, indoorsCount;
+   var natureCount = 0, cityCount = 0, indoorsCount = 0;
    console.log(list.get("nature"));
    for(var i = 0; i < chosenOptions.length; i++){
        if(list.get("nature").indexOf(chosenOptions[i]) >= 0){
@@ -79,20 +80,19 @@ function name() {
        }
    }
 
-
    if(natureCount >= 3){//nature is the most
-        
+        roomName = "nature";
    } else if (cityCount >= 3){//city is the most
-
+        roomName = "city";
    } else if (indoorsCount >= 3){//indoors is the most
-
+        roomName = "indoors";
    } else { //all other cases
       if(cityCount == natureCount && cityCount >= indoorsCount){
  
       } else if (cityCount == indoorsCount && cityCount >= natureCount){
 
       } else if(natureCount == indoorsCount && natureCount >= cityCount){
-
+            
       } else { //all three are randomly scattered (not gonna happen)
 
       }
