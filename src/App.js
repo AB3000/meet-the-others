@@ -160,10 +160,10 @@ class App extends Component {
    
 
                <label htmlFor="first" className = {css(styles.label)}>First</label> 
-                  <select id="first" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="first" className = {css(styles.input)} onChange = {this.handleSelect} >
                   {
                     options.map((id) => 
-                    <option value={id}>{id}</option>)
+                    <option value={id} placeholder = "lounges">{id}</option>)
                   }
                   </select>
 

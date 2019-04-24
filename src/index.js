@@ -19,10 +19,8 @@ function Wrapper(props) {
     return (
         <Router>
             <Route exact path="/" render={(props) =>
-                <App history={history} data={data} /> 
-                   
+                <App history={history} data={data} />  
             }/>
-            
             <Route exact path="/Chat" render={(props) =>
                 <Chat history={history} data={data} />   
             }/>
@@ -30,5 +28,9 @@ function Wrapper(props) {
         </Router>
     )
 }
+
 ReactDOM.render(Wrapper(), document.getElementById('root'));
 serviceWorker.unregister();
+
+
+//have the class here 
