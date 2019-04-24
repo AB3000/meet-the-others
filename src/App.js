@@ -6,7 +6,8 @@ import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import firebase from './firebase'; // use this when database is implemented
+import {auth} from './Fire'
+import firebase from './Fire'; // use this when database is implemented
 import Chat from "./Chat";
 import login from "./App";
 import PrivateRoute from "./PrivateRoute";
@@ -15,46 +16,46 @@ import { app } from 'firebase';
 
 // experimental db stuff
 ///* //Start of comments
-var db = firebase.database()
-var aut = firebase.auth()
-var setUsername = "Username";
-var password = "Password";
+// var db = firebase.database()
+// var aut = firebase.auth()
+// var username = "Username";
+// var password = "Password";
 // current structure:
 //   username  (string)
 //   password  (string)
 //   interests (string[5])
-var createUser = (username, password, interests) => {
-  var lukepassword = db.ref('users/lukecheng/password')
-  lukepassword.on('value', (p) => {
-    window.alert(p)
-  })
-}
+// var createUser = (username, password, interests) => {
+//   var lukepassword = db.ref('users/lukecheng/password')
+//   lukepassword.on('value', (p) => {
+//     window.alert(p)
+//   })
+// }
 
 
 
-var lukepassword = firebase.database().ref('users/lukecheng/password')
-lukepassword.on('value', (p) => {
-  window.alert(p)
-})
+// var lukepassword = firebase.database().ref('users/lukecheng/password')
+// lukepassword.on('value', (p) => {
+//   window.alert(p)
+// })
 /*SIGN IN*/
 //We will have to get this from the data base itself, and set vars accordingly and then compare with the input some how
 
 //check if passwords match
-aut.signInWithEmailAndPassword(setUsername, password).catch(function(error){
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
-})
-/*SIGN OUT*/
-aut.signOut().then(function(){
-  //Signout successful
-  console.log("Signed out!");
+// auth.signInWithEmailAndPassword(username, password).catch(function(error){
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+//   console.log(errorCode);
+//   console.log(errorMessage);
+// })
+// /*SIGN OUT*/
+// aut.signOut().then(function(){
+//   //Signout successful
+//   console.log("Signed out!");
 
-}).catch(function(error){
-  console.log(error);
-})
-//*/ //End of the comments
+// }).catch(function(error){
+//   console.log(error);
+// })
+// //*/ //End of the comments
 
 var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising", "beaches", "hikes", "biking", "running", "outdoor games (i.e. hide and seek, tag, etc.)", "outdoor sports (i.e. football, basketball, etc.)", "road trips"]], 
             ["city" , ["shopping", "clubs", "bars", "lounges", "restaurants", "museums", "concerts"]], 
@@ -70,13 +71,7 @@ function name() {
     
 }
 
-
- // console.log("jdksaljdlas");
-class App extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
+const state = {
       first: "",
       second: "",
       third: "", 
@@ -84,10 +79,64 @@ class App extends Component {
       fifth: "",
       password: "",
       username:"",
+      errorMessage: null,
+}
+
+ // console.log("jdksaljdlas");
+class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.state = {
+      ...state
     }
   }
 
   
+  handleChange = (event) => {
+    const newValue = {}
+    newValue[event.target.name] = event.target.value
+    this.setState(newValue)
+  }
+
+  handleSignIn = (event) => {
+    event.preventDefault();
+    auth
+    .signInWithEmailAndPassword(this.state.username, this.state.password)
+    .then(() => {
+      //console.log("test")
+
+      this.setState({...state})
+    })
+    .catch(error =>this.setState({errorMessage:"Invalid signin"}))
+  }
+
+  handleSignUp = (event) => {
+    event.preventDefault();
+    auth
+    .createUserWithEmailAndPassword(this.state.username, this.state.password)
+    .then(() => {
+      //console.log("test")
+      //this.setState({...this.state})
+      if(this.state.username){
+        this.props.updateUser({
+          username: this.state.username,
+        })
+      }
+    })
+    .catch(error => this.setState({errorMessage:"Invalid Signup"}))
+  }
+
+  
+    //const {username, password} = event.target.id
+    // try {
+    //   const user = await login.auth.signInWithEmailAndPassword(username.value, password.value)
+    //   this.props.history.push("/");
+    // }catch (error){
+    //   alert(error)
+    // };
+
   handleSelect = (event) => {
     console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({[event.target.id]: event.target.value});
@@ -116,19 +165,11 @@ class App extends Component {
       </div>
     ))
   }
-  handleSignIn = async event => {
-    event.preventDefault();
-    const {username, password} = event.target.elements
-    try {
-      const user = await login.auth.signInWithEmailAndPassword(username.value, password.value)
-      this.props.history.push("/");
-    }catch (error){
-      alert(error)
-    };
-  }
+
+
 
   componentWillMount() {
-    aut.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
           authenticated: true,
@@ -146,6 +187,7 @@ class App extends Component {
   }
 
   render() {
+    const {first, second, third, fourth, fifth, password, username, errorMessage} = this.state;
     return (
     
     <div className = {css(styles.body)}>
@@ -167,7 +209,7 @@ class App extends Component {
    
 
                <label htmlFor="first" className = {css(styles.label)}>First</label> 
-                  <select id="first" className = {css(styles.input)} onChange = {this.handleSelect} >
+                  <select id="first" className = {css(styles.input)} onChange = {this.handleChange} >
                   {
                     options.map((id) => 
                     <option value={id} placeholder = "lounges">{id}</option>)
@@ -175,7 +217,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="second" className = {css(styles.label)}>Second</label> 
-                  <select id="second" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="second" className = {css(styles.input)} onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -183,7 +225,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="third" className = {css(styles.label)}>Third</label> 
-                  <select id="third" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="third" className = {css(styles.input)} onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -191,7 +233,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="fourth" className = {css(styles.label)}>Fourth</label> 
-                  <select id="fourth" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="fourth" className = {css(styles.input)} onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -199,7 +241,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="fifth" className = {css(styles.label)}>Fifth</label> 
-                  <select id="fifth" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="fifth" className = {css(styles.input)} onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -207,7 +249,7 @@ class App extends Component {
                   </select>
              
                  
-               <button type="submit" value="Submit" onClick = {this.handleSubmit}> Submit</button>
+               <button type="submit" value="Submit" onSubmit = {this.handleSignUp} > Submit</button>
                <Router>
                 <div>
 
@@ -216,13 +258,13 @@ class App extends Component {
            </form>
       </div>
       <div className = {css(styles.blocks)}>
-             <form action="/Chat.js">
+             <form action="/Chat">
                <label htmlFor="name" className = {css(styles.label)}>Username</label>
-               <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)}></input>
+               <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)} onChange={this.handleChange}></input>
            
                <label htmlFor="password" className = {css(styles.label)}>Password</label>
-               <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password"></input>
-               <button type="submit" value="Submit" onClick = {this.handleSignIn}> Submit</button>
+               <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password" onChange={this.handleChange}></input>
+               <button type="submit" value="Submit" onSubmit = {this.handleSubmit}> Submit</button>
                <Route>
                  <div>
                  </div>

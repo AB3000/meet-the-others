@@ -1,5 +1,7 @@
 import firebase from 'firebase'
-
+import "firebase/database"
+import "firebase/auth"
+import Rebase from "re-base";
 // this file takes in the given firebase code and adds your api information onto it
 // then exporting as an authenticated object that you can just call
 
@@ -11,5 +13,11 @@ var config = {
     storageBucket: "meet-the-others.appspot.com",
     messagingSenderId: "313507434165"
 }
-firebase.initializeApp(config)
+const app = firebase.initializeApp(config)
+
+export const auth = firebase.auth()
+
+const db = firebase.database(app)
+const base = Rebase.createClass(db)
+
 export default firebase
