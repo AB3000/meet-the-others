@@ -81,13 +81,20 @@ function name() {
 
 
    if(natureCount >= 3){//nature is the most
-
+        
    } else if (cityCount >= 3){//city is the most
 
    } else if (indoorsCount >= 3){//indoors is the most
 
-   } else {
+   } else { //all other cases
+      if(cityCount == natureCount){
 
+      } else if (cityCount == indoorsCount){
+
+      } else if(natureCount == indoorsCount){
+        
+      }
+        
    }
  
 } 
