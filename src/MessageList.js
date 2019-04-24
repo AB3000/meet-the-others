@@ -38,8 +38,10 @@ scrollToBottom =() =>{
             />
           ))
         }
+    
         <div>
-          ref={el => this.messgaesEnd = el}
+          {/* ref= */}
+           {el => this.messgaesEnd = el}
         </div>
       </div>
     )

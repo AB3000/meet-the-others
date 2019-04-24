@@ -192,7 +192,7 @@ class App extends Component {
   // };
 
   handleSelect = (event) => {
-    console.log(event.target.id + " and the value is " + event.target.value)
+    //console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({ [event.target.id]: event.target.value });
   }
 
