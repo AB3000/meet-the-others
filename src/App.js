@@ -126,11 +126,6 @@ function name() {
 
 
 const state = {
-      first: "",
-      second: "",
-      third: "", 
-      fourth: "",
-      fifth: "",
       password: "",
       username:"",
       errorMessage: null,
@@ -264,7 +259,7 @@ class App extends Component {
    
 
                <label htmlFor="first" className = {css(styles.label)}>First</label> 
-                  <select id="first" className = {css(styles.input)} onChange = {this.handleChange} >
+                  <select id="first" className = {css(styles.input)} defaultValue="concerts" onChange = {this.handleChange} >
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -272,7 +267,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="second" className = {css(styles.label)}>Second</label> 
-                  <select id="second" className = {css(styles.input)} onChange = {this.handleChange}>
+                  <select id="second" className = {css(styles.input)} defaultValue="biking" onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -280,7 +275,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="third" className = {css(styles.label)}>Third</label> 
-                  <select id="third" className = {css(styles.input)} onChange = {this.handleChange}>
+                  <select id="third" className = {css(styles.input)} defaultValue="lounges"onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -288,7 +283,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="fourth" className = {css(styles.label)}>Fourth</label> 
-                  <select id="fourth" className = {css(styles.input)} onChange = {this.handleChange}>
+                  <select id="fourth" className = {css(styles.input)} defaultValue="running" onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -296,7 +291,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="fifth" className = {css(styles.label)}>Fifth</label> 
-                  <select id="fifth" className = {css(styles.input)} onChange = {this.handleChange}>
+                  <select id="fifth" className = {css(styles.input)} defaultValue="museums"onChange = {this.handleChange}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
