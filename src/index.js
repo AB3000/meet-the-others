@@ -7,7 +7,6 @@ import Chat from './Chat';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import {createBrowserHistory} from "history"
-
 const history = createBrowserHistory()
 
 //ReactDOM.render(<Chat />, document.getElementById('root'))
@@ -23,10 +22,11 @@ function Wrapper(props) {
                 <App history={history} data={data} /> 
                    
             }/>
-
+            
             <Route exact path="/Chat" render={(props) =>
                 <Chat history={history} data={data} />   
             }/>
+
         </Router>
     )
 }
