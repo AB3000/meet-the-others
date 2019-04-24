@@ -101,7 +101,7 @@ class App extends Component {
 
       <div className = {css(styles.containBlocks)}>
       <div className = {css(styles.blocks)}>
-             <form action="/Chat.js">
+             <form action>
              <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
                <label htmlFor="fname" className = {css(styles.label)}>Choose a username!</label>
                <input type="text" id="username" name="username" placeholder="Username" className = {css(styles.input)} onChange = {this.handleSelect}></input>
