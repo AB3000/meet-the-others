@@ -59,7 +59,7 @@ class Chat extends Component {
   }
 
   render() {
-    //console.log("room is " )
+    console.log("room is " +  this.props)
     return (
       <div className="Chat" style={styles}>
         {/* <ChatHeader
