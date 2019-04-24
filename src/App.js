@@ -116,9 +116,7 @@ function name() {
           } else {
               roomName = "city";
           }
-
-      }
-      
+      } 
    }
  
 } 
@@ -216,15 +214,15 @@ class App extends Component {
    
 
                <label htmlFor="first" className = {css(styles.label)}>First</label> 
-                  <select id="first" className = {css(styles.input)} onChange = {this.handleSelect} >
+                  <select id="first" className = {css(styles.input) } defaultValue= "lounges" onChange = {this.handleSelect} >
                   {
                     options.map((id) => 
-                    <option value={id} placeholder = "lounges">{id}</option>)
+                    <option value={id}>{id}</option>)
                   }
                   </select>
 
               <label htmlFor="second" className = {css(styles.label)}>Second</label> 
-                  <select id="second" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="second" className = {css(styles.input)} defaultValue = "concerts" onChange = {this.handleSelect}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -232,7 +230,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="third" className = {css(styles.label)}>Third</label> 
-                  <select id="third" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="third" className = {css(styles.input)} defaultValue = "farms" onChange = {this.handleSelect}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -240,7 +238,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="fourth" className = {css(styles.label)}>Fourth</label> 
-                  <select id="fourth" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="fourth" className = {css(styles.input)} defaultValue = "museums"  onChange = {this.handleSelect}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
@@ -248,7 +246,7 @@ class App extends Component {
                   </select>
 
               <label htmlFor="fifth" className = {css(styles.label)}>Fifth</label> 
-                  <select id="fifth" className = {css(styles.input)} onChange = {this.handleSelect}>
+                  <select id="fifth" className = {css(styles.input)} defaultValue = "biking" onChange = {this.handleSelect}>
                   {
                     options.map((id) => 
                     <option value={id}>{id}</option>)
