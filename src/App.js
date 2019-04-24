@@ -79,7 +79,7 @@ function name() {
            indoorsCount++;
        }
    }
-
+   
    if(natureCount >= 3){//nature is the most
         roomName = "nature";
    } else if (cityCount >= 3){//city is the most
@@ -87,12 +87,25 @@ function name() {
    } else if (indoorsCount >= 3){//indoors is the most
         roomName = "indoors";
    } else { //all other cases
+      var room = Math.floor(Math.random() * 2); //generates a number from 0 (inclusive) to 1 (inclusive)
       if(cityCount == natureCount && cityCount >= indoorsCount){
- 
+           if (room == 0){
+              roomName = "city";
+           } else { 
+              roomName = "nature";
+           }
       } else if (cityCount == indoorsCount && cityCount >= natureCount){
-
+          if (room == 0){
+              roomName = "city";
+          } else { 
+              roomName = "indoors";
+          }
       } else if(natureCount == indoorsCount && natureCount >= cityCount){
-            
+          if (room == 0){
+              roomName = "nature";
+          } else { 
+              roomName = "indoors";
+          }
       } else { //all three are randomly scattered (not gonna happen)
 
       }
