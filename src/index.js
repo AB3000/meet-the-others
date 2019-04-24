@@ -6,11 +6,11 @@ import App from './App';
 import Chat from './Chat';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
-import {createBrowserHistory} from "history"
-const history = createBrowserHistory()
+// import {createBrowserHistory} from "history"
+// const history = createBrowserHistory()
 
 //ReactDOM.render(<Chat />, document.getElementById('root'))
-const data = {};
+//const data = {};
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

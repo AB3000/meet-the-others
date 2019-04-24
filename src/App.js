@@ -94,6 +94,7 @@ class App extends Component {
   }
 
   
+  
   handleChange = (event) => {
     const newValue = {}
     newValue[event.target.name] = event.target.value
