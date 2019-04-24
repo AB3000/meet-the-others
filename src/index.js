@@ -17,14 +17,15 @@ const data = {};
 // Learn more about service workers: https://bit.ly/CRA-PWA
 function Wrapper(props) {
     return (
-        <Router>
-            <Route exact path="/" render={(props) =>
-                <App history={history} data={data} />  
-            }/>
-            <Route exact path="/Chat" render={(props) =>
-                <Chat history={history} data={data} />   
-            }/>
-
+        <Router history = {history}>
+            <div>
+                <Route exact path="/" render={(props) =>
+                    <App history={history} data={data} />  
+                }/>
+                <Route exact path="/Chat" render={(props) =>
+                    <Chat history={history} data={data} />   
+                }/>
+            </div>
         </Router>
     )
 }

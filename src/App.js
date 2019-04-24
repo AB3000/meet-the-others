@@ -64,12 +64,66 @@ var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising"
   var options = (list.get("nature").concat(list.get("city"))).concat(list.get("indoors"));
 
 var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fill
+var roomName = "nature";
 // console.log(list.get("nature"));
 
+//determines the roomname of the room the user will be redirected to 
 function name() {
-    //  console.log(document.getElementById("first").value + " jdslakdjksla jdskaljdlskajdlkas");
-    
-}
+    var chosenOptions = [document.getElementById("first").value, document.getElementById("second").value
+  , document.getElementById("third").value, document.getElementById("fourth").value, 
+  document.getElementById("fifth").value]
+   var natureCount = 0, cityCount = 0, indoorsCount = 0;
+   console.log(list.get("nature"));
+   for(var i = 0; i < chosenOptions.length; i++){
+       if(list.get("nature").indexOf(chosenOptions[i]) >= 0){
+           natureCount++;
+       } else if (list.get("city").indexOf(chosenOptions[i]) >= 0){
+           cityCount++;
+       } else { //indoors
+           indoorsCount++;
+       }
+   }
+   
+   if(natureCount >= 3){//nature is the most
+        roomName = "nature";
+   } else if (cityCount >= 3){//city is the most
+        roomName = "city";
+   } else if (indoorsCount >= 3){//indoors is the most
+        roomName = "indoors";
+   } else { //all other cases
+      var room = Math.floor(Math.random() * 2); //generates a number from 0 (inclusive) to 1 (inclusive)
+      if(cityCount == natureCount && cityCount >= indoorsCount){
+           if (room == 0){
+              roomName = "city";
+           } else { 
+              roomName = "nature";
+           }
+      } else if (cityCount == indoorsCount && cityCount >= natureCount){
+          if (room == 0){
+              roomName = "city";
+          } else { 
+              roomName = "indoors";
+          }
+      } else if(natureCount == indoorsCount && natureCount >= cityCount){
+          if (room == 0){
+              roomName = "nature";
+          } else { 
+              roomName = "indoors";
+          }
+      } else { //all three are randomly scattered (not gonna happen)
+          var r = Math.floor(Math.random() * 3); //generates a number from 0 (inclusive) to 2 (inclusive)
+          if (r == 0){
+              roomName = "nature";
+          } else  if(r == 1) { 
+              roomName = "indoors";
+          } else {
+              roomName = "city";
+          }
+      } 
+   }
+ 
+} 
+
 
 const state = {
       first: "",
@@ -144,9 +198,9 @@ class App extends Component {
   }
 
   handleSubmit = (event) => {
-    name();
     event.preventDefault();
     console.log(this.state)
+    name(); //get the roomname user will be assigned to
     this.props.history.push("/Chat");
   }
   renderOptions() {
@@ -192,7 +246,7 @@ class App extends Component {
     return (
     
     <div className = {css(styles.body)}>
-      <p className = {css(styles.FadeAnimations)}> Welcome!</p>
+      {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
       <div className = {css(styles.containBlocks)}>
           <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
           <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
@@ -213,7 +267,7 @@ class App extends Component {
                   <select id="first" className = {css(styles.input)} onChange = {this.handleChange} >
                   {
                     options.map((id) => 
-                    <option value={id} placeholder = "lounges">{id}</option>)
+                    <option value={id}>{id}</option>)
                   }
                   </select>
 
