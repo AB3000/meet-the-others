@@ -130,27 +130,22 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      first: "",
-      second: "",
-      third: "", 
-      fourth: "",
-      fifth: "",
       password: "",
       username:"",
+      roomName:"",
     }
   }
 
   
   handleSelect = (event) => {
-    name();
     console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({[event.target.id]: event.target.value});
   }
 
   handleSubmit = (event) => {
-    name();
     event.preventDefault();
     console.log(this.state)
+    name();
     this.props.history.push("/Chat");
   }
   renderOptions() {
