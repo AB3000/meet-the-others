@@ -30,6 +30,8 @@ var createUser = (username, password, interests) => {
   })
 }
 
+
+
 var lukepassword = firebase.database().ref('users/lukecheng/password')
 lukepassword.on('value', (p) => {
   window.alert(p)
@@ -63,9 +65,13 @@ var list = new Map([["nature", [ "farms", "parks", "nature trails", "exercising"
 var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fill
 // console.log(list.get("nature"));
 
+function name() {
+    //  console.log(document.getElementById("first").value + " jdslakdjksla jdskaljdlskajdlkas");
+    
+}
 
 
-  // console.log("jdksaljdlas");
+ // console.log("jdksaljdlas");
 class App extends Component {
 
   constructor(props) {
@@ -81,14 +87,15 @@ class App extends Component {
     }
   }
 
+  
   handleSelect = (event) => {
     console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({[event.target.id]: event.target.value});
   }
 
   handleSubmit = (event) => {
+    name();
     event.preventDefault();
-    alert("dnhsakjdhsakjdhja")
     console.log(this.state)
     this.props.history.push("/Chat");
   }
