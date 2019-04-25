@@ -263,7 +263,11 @@ class App extends Component {
     return (
 
       <div className={css(styles.body)}>
-        {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
+        
+        <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
+        <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
+        to others based on what you like to do during the weekend!</p>
+
         <div className={css(styles.containBlocks)}>
           <p className={css(styles.FadeAnimations2)}>New User? Start here!</p>
           <p className={css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
@@ -383,32 +387,51 @@ const styles = StyleSheet.create({
   html: {
     backgroundColor: 'black',
     overflow: 'hidden',
+    // backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
 
   body: {
     // backgroundColor: 'black',
     overflow: 'hidden',
+    backgroundColor: 'rgba(201, 255, 252, 0.3)'
   },
 
   FadeAnimations: {
     animationName: 'fadein',
     animationDuration: '3s',
     textAlign: 'center',
-    color: 'white',
+    color: '#4c3a1f',
     fontSize: '80px',
     width: '100%',
     padding: '10px',
+    // backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
+
 
   FadeAnimations2: {
     animationName: 'fadein',
-    animationDuration: '5s',
+    animationDuration: '3s',
     textAlign: 'center',
+    fontWeight: 'bold',
     color: '#4c3a1f',
     fontSize: '30px',
     paddingLeft: '20px',
     paddingRight: '20px',
     width: '40%',
+  },
+
+
+  FadeAnimations3: {
+    animationName: 'fadein',
+    animationDuration: '3s',
+    textAlign: 'center',
+    display: 'flex',
+    color: '#4c3a1f',
+    fontSize: '50px',
+    width: '100%',
+    padding: '10px',
+    
+    // backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
 
   blocks: {
@@ -436,7 +459,7 @@ const styles = StyleSheet.create({
     paddingBottom: '30px',
     justifyContent: 'space-between',
     position: 'relative',
-    // backgroundColor: 'rgba(0,0,0,0.5)',
+    // backgroundColor: 'rgba(201, 255, 252, 0.5)',
   },
 
   div: {
