@@ -14,6 +14,8 @@ import login from "./App";
 import PrivateRoute from "./PrivateRoute";
 import { app } from 'firebase';
 import { EventEmitter } from 'events';
+import { database } from 'firebase-admin';
+import { write } from 'fs';
 
 
 // experimental db stuff
@@ -126,7 +128,13 @@ function name() {
   }
 
 }
-
+// function writeUserData(userId, user, password){
+//   console.log("does this work")
+//   firebase.database().ref('users/' + userId).set({
+//     username: user,
+//     password: password
+//   })
+// }
 
 const state = {
   password: "",
@@ -141,6 +149,7 @@ const state = {
   roomName: "",
   errorMessage: null,
 }
+var admin = require('firebase-admin').initializeApp
 
 // console.log("jdksaljdlas");
 class App extends Component {
@@ -173,19 +182,30 @@ class App extends Component {
       })
       .then((e) => {
         console.log("signed in")
+        console.log(this.state.username2.uid)
         window.location = window.location.protocol + "//" + window.location.host + "/Chat"
+        if(this.state.username2){
+          this.props.getElementById({
+            username: this.state.props.username2.uid
+          })
+        }
       })
   }
 
   handleSignUp = (event) => {
     event.preventDefault();
+    // admin.auth().createUser({
+    //   username: this.state.username,
+    //   password: this.state.password
+    // })
+    // writeUserData(this.state.username.uid, this.state.username, this.state.password)
     auth
       .createUserWithEmailAndPassword(this.state.username, this.state.password)
       .then(() => {
         //console.log("test")
         //this.setState({...this.state})
         if (this.state.username) {
-          this.props.updateUser({
+          this.props.createUser({
             username: this.state.username,
             password: this.state.password
           })
@@ -199,7 +219,45 @@ class App extends Component {
     this.setState({ fifth: event.target.fifth.value })
   }
 
+  handleAuth = (oAuthUser) => {
+    const user = {
+      uid: oAuthUser.uid || oAuthUser.username,
+      username: oAuthUser.username
+    }
+    this.syncUser(user)
+    localStorage.setItem('user', JSON.stringify(user))
+  }
 
+  syncUser = user => {
+    this.userRef = firebase.syncState(
+      `users/${this.state.user.uid}`,
+      {
+        context: this,
+        state: 'user',
+        then: () => this.setState({ user })
+      }
+    )
+  }
+
+  updateUser = userData => {
+    const attributes = ['username', 'uid', 'password']
+    const user = {...this.state.username}
+    Object.keys(userData).forEach(
+      attribute => {
+        if (attributes.indexOf(attribute) === -1) {
+          user[attribute] = userData[attribute]
+        }
+      }
+    )
+    this.setState({ user })
+  }
+  handleUnauth = () => {
+    if(this.userRef){
+      firebase.removeBinding(this.userRef)
+    }
+    this.setState({user: {}})
+    localStorage.removeItem('user')
+  }
   //const {username, password} = event.target.id
   // try {
   //   const user = await login.auth.signInWithEmailAndPassword(username.value, password.value)
@@ -207,7 +265,7 @@ class App extends Component {
   // }catch (error){
   //   alert(error)
   // };
-
+  
   handleUsername = (event) => {
     //console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({ [event.target.id]: event.target.value });
@@ -244,8 +302,6 @@ class App extends Component {
     ))
   }
 
-
-
   componentWillMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -263,6 +319,7 @@ class App extends Component {
       }
     });
   }
+
 
   render() {
     const { first, second, third, fourth, fifth, password, username, errorMessage } = this.state;
