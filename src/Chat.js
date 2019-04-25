@@ -4,6 +4,7 @@ import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 import App from './App'
+import base from './Fire'
 
 class Chat extends Component {
   constructor() {
@@ -14,35 +15,34 @@ class Chat extends Component {
     }
   }
   
-  
-//   componentDidMount() {
-//     this.syncMessages()
-//   }
+  componentDidMount() {
+    this.syncMessages()
+  }
 
-//   componentDidUpdate(prevProps, _prevState, _snapshot){
-//     if(prevProps.room.name !== this.props.name){
-//       this.syncMessages()
-//     }
-//   }
+  componentDidUpdate(prevProps, _prevState, _snapshot){
+    if(prevProps.room.name !== this.props.room){
+      this.syncMessages()
+    }
+  }
 
-//   componentWillUnmount() {
-//     base.removeBinding(this.messagesRef)
-//   }
+  componentWillUnmount() {
+    base.removeBinding(this.messagesRef)
+  }
 
-//   syncMessages = () => {
-//     //Stop syncing with the current endpoint
-//     if(this.messagesRef){
-//       base.removeBinding(this.messagesRef)
-//     }
-//     this.messagesRef = base.syncState(
-//       `messages/${this.props.room.name}`,
-//       {
-//         context: this,
-//         state: 'messages',
-//         asArray: true,
-//       }
-//     )
-//   }
+  syncMessages = () => {
+    //Stop syncing with the current endpoint
+    if(this.messagesRef){
+      base.removeBinding(this.messagesRef)
+    }
+    this.messagesRef = base.syncState(
+      `messages/${this.props.room.name}`,
+      {
+        context: this,
+        state: 'messages',
+        asArray: true,
+      }
+    )
+  }
 
   addMessage = (body) => {
     const messages = [...this.state.messages]

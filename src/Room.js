@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { StyleSheet, css } from 'aphrodite'
+import base from './Fire'
 
 const Room = ({ roomName }) => {
   return (
