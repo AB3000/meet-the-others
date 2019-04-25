@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
        flex: 1,
       display: 'flex',
       flexDirection: 'column',
+      overflow: 'hidden',
   },
 })
 

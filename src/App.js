@@ -392,6 +392,7 @@ const styles = StyleSheet.create({
 
   body: {
     // backgroundColor: 'black',
+    backgroundImage: 'url(socializing.jpg)',
     // overflow: 'auto',
     overflow: 'hidden',
   },
