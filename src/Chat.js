@@ -7,6 +7,7 @@ import MessageForm from './MessageForm'
 import App from './App'
 import './Chat.css'
 import fire from './Fire'
+import {auth} from './Fire'
 import firebase from 'firebase'
 
 
@@ -58,9 +59,10 @@ class Chat extends Component {
   addMessage = (body) => {
 
     const messages = [...this.state.messages]
-    const user =  "65GnB06eh7dDvufZ3rN7R2UHWZC3";
-    // console.log("this.props.user is " + this.props.);
-    // console.log ("this.props.roomName is " + this.props.roomName);
+    //const user =  firebase.auth.id;
+    const user = auth.currentUser
+    console.log("this.props.user is " + user);
+
 
     console.log("user is " + user);
     messages.push({
