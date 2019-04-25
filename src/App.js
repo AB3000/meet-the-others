@@ -14,7 +14,6 @@ import login from "./App";
 import PrivateRoute from "./PrivateRoute";
 import { app } from 'firebase';
 import { EventEmitter } from 'events';
-// import { Button } from 'react-native-elements';
 
 
 // experimental db stuff
@@ -137,10 +136,7 @@ const state = {
   third: "",
   fourth: "",
   fifth: "",
-  username2: "",
-  password2: "",
   errorMessage: null,
-  hidden: true,
 }
 
 // console.log("jdksaljdlas");
@@ -152,13 +148,6 @@ class App extends Component {
     this.state = {
       ...state
     }
-  }
-
-   /*for making the welcome/landing page disappear on click*/
-  toggleHidden () {
-    this.setState({
-      hidden: !this.state.hidden,
-    })
   }
 
   signedIn = () => {
@@ -277,26 +266,9 @@ class App extends Component {
     //   firebase.database().ref('users/' + username).set
     // }
     return (
-      
+
       <div className={css(styles.body)}>
-       <div>
-         {this.state.hidden && <Child/>}
-         <button onClick={this.toggleHidden.bind(this)} >
-              Click here to start!
-        </button>
-       </div>
-
-        <div>
-          {!this.state.hidden && <Child2/>}
-        </div>
-      </div>
-    );
-  }
-}
-
-
-const Child2 = () => (
-  <div>
+        {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
         <div className={css(styles.containBlocks)}>
           <p className={css(styles.FadeAnimations2)}>New User? Start here!</p>
           <p className={css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
@@ -308,13 +280,13 @@ const Child2 = () => (
               <p className={css(styles.label)}> What do you like to do in the weekend?</p>
 
               <label htmlFor="fname" className={css(styles.label)}>Choose a username!</label>
-              <input type="text" id="username" name="username" placeholder="Username" className={css(styles.input)} onChange={App.handleUsername}></input>
+              <input type="text" id="username" name="username" placeholder="Username" className={css(styles.input)} onChange={this.handleUsername}></input>
 
               <label htmlFor="password" className={css(styles.label)}>Create a password!</label>
-              <input type="password" className={css(styles.input)} onChange={App.handlePassword} id="password" name="password" placeholder="password"></input>
+              <input type="password" className={css(styles.input)} onChange={this.handlePassword} id="password" name="password" placeholder="password"></input>
 
               <label htmlFor="first" className={css(styles.label)}>First</label>
-              <select id="first" className={css(styles.input)} defaultValue="concerts" onChange={App.handleChange} >
+              <select id="first" className={css(styles.input)} defaultValue="concerts" onChange={this.handleChange} >
                 {
                   options.map((id) =>
                     <option value={id}>{id}</option>)
@@ -322,7 +294,7 @@ const Child2 = () => (
               </select>
 
               <label htmlFor="second" className={css(styles.label)}>Second</label>
-              <select id="second" className={css(styles.input)} defaultValue="biking" onChange={App.handleChange}>
+              <select id="second" className={css(styles.input)} defaultValue="biking" onChange={this.handleChange}>
                 {
                   options.map((id) =>
                     <option value={id}>{id}</option>)
@@ -330,7 +302,7 @@ const Child2 = () => (
               </select>
 
               <label htmlFor="third" className={css(styles.label)}>Third</label>
-              <select id="third" className={css(styles.input)} defaultValue="lounges" onChange={App.handleChange}>
+              <select id="third" className={css(styles.input)} defaultValue="lounges" onChange={this.handleChange}>
                 {
                   options.map((id) =>
                     <option value={id}>{id}</option>)
@@ -338,7 +310,7 @@ const Child2 = () => (
               </select>
 
               <label htmlFor="fourth" className={css(styles.label)}>Fourth</label>
-              <select id="fourth" className={css(styles.input)} defaultValue="running" onChange={App.handleChange}>
+              <select id="fourth" className={css(styles.input)} defaultValue="running" onChange={this.handleChange}>
                 {
                   options.map((id) =>
                     <option value={id}>{id}</option>)
@@ -346,7 +318,7 @@ const Child2 = () => (
               </select>
 
               <label htmlFor="fifth" className={css(styles.label)}>Fifth</label>
-              <select id="fifth" className={css(styles.input)} defaultValue="museums" onChange={App.handleChange}>
+              <select id="fifth" className={css(styles.input)} defaultValue="museums" onChange={this.handleChange}>
                 {
                   options.map((id) =>
                     <option value={id}>{id}</option>)
@@ -361,7 +333,7 @@ const Child2 = () => (
             </form>
           </div>
           <div className={css(styles.blocks)}>
-            <form onSubmit={(e) => App.handleSignIn(e)}>
+            <form onSubmit={(e) => this.handleSignIn(e)}>
               <label htmlFor="username" className={css(styles.label)}>
                 Username
                 <input 
@@ -369,8 +341,8 @@ const Child2 = () => (
                   id="username2"
                   placeholder="Username"
                   className={css(styles.input)}
-                  // value={App.state.username2}
-                  onChange={App.handleUsername} />
+                  value={this.state.username2}
+                  onChange={this.handleUsername} />
               </label>
               <label htmlFor="password" className={css(styles.label)}>
                 Password
@@ -379,8 +351,8 @@ const Child2 = () => (
                   id="password2"
                   placeholder="Password"
                   className={css(styles.input)} 
-                  // value={App.state.password2}
-                  onChange={App.handlePassword}
+                  value={this.state.password2}
+                  onChange={this.handlePassword}
                   />
               </label>
               <input type="submit" value="Sign in" />
@@ -400,70 +372,45 @@ const Child2 = () => (
             </form>
 
           </div>
-         </div>
         </div>
-    )
+      </div>
+    );
+  }
+}
 
-const Child = () => (
-  <div>
-        <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
-        <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
-        to others based on what you like to do during the weekend!</p>
-        {/* <button type="submit">Click here to start!</button> */}
-  </div>
-)
-  
+
 const styles = StyleSheet.create({
 
   html: {
     backgroundColor: 'black',
     overflow: 'hidden',
-    backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
 
   body: {
     // backgroundColor: 'black',
     // overflow: 'auto',
     overflow: 'hidden',
-    backgroundColor: 'rgba(201, 255, 252, 0.3)'
   },
 
   FadeAnimations: {
     animationName: 'fadein',
     animationDuration: '3s',
     textAlign: 'center',
-    color: '#4c3a1f',
+    color: 'white',
     fontSize: '80px',
     width: '100%',
     padding: '10px',
-    // backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
-
 
   FadeAnimations2: {
     animationName: 'fadein',
-    animationDuration: '3s',
+    animationDuration: '5s',
     textAlign: 'center',
-    fontWeight: 'bold',
     color: '#4c3a1f',
     fontSize: '30px',
     paddingLeft: '20px',
     paddingRight: '20px',
     width: '40%',
-  },
-
-
-  FadeAnimations3: {
-    animationName: 'fadein',
-    animationDuration: '3s',
-    textAlign: 'center',
-    display: 'flex',
-    color: '#4c3a1f',
-    fontSize: '50px',
-    width: '100%',
-    // padding: '15px 15px',
-    
-    // backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
 
   blocks: {
@@ -491,7 +438,7 @@ const styles = StyleSheet.create({
     paddingBottom: '30px',
     justifyContent: 'space-between',
     position: 'relative',
-    // backgroundColor: 'rgba(201, 255, 252, 0.5)',
+    // backgroundColor: 'rgba(0,0,0,0.5)',
   },
 
   div: {
