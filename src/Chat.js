@@ -4,6 +4,7 @@ import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 import App from './App'
+import fire from './Fire'
 
 class Chat extends Component {
   constructor() {
@@ -14,43 +15,42 @@ class Chat extends Component {
     }
   }
   
-  
-//   componentDidMount() {
-//     this.syncMessages()
-//   }
+  componentDidMount() {
+    this.syncMessages()
+  }
 
-//   componentDidUpdate(prevProps, _prevState, _snapshot){
-//     if(prevProps.room.name !== this.props.name){
-//       this.syncMessages()
-//     }
-//   }
+  componentDidUpdate(prevProps, _prevState, _snapshot){
+    if(prevProps.roomName !== this.props.room){
+      this.syncMessages()
+    }
+  }
 
-//   componentWillUnmount() {
-//     base.removeBinding(this.messagesRef)
-//   }
+  componentWillUnmount() {
+    fire.removeBinding(this.messagesRef)
+  }
 
-//   syncMessages = () => {
-//     //Stop syncing with the current endpoint
-//     if(this.messagesRef){
-//       base.removeBinding(this.messagesRef)
-//     }
-//     this.messagesRef = base.syncState(
-//       `messages/${this.props.room.name}`,
-//       {
-//         context: this,
-//         state: 'messages',
-//         asArray: true,
-//       }
-//     )
-//   }
+  syncMessages = () => {
+    //Stop syncing with the current endpoint
+    if(this.messagesRef){
+      fire.removeBinding(this.messagesRef)
+    }
+    this.messagesRef = fire.syncState(
+      `messages/${this.props.roomName}`,
+      {
+        context: this,
+        state: 'messages',
+        asArray: true,
+      }
+    )
+  }
 
   addMessage = (body) => {
     const messages = [...this.state.messages]
-    //const user = this.props.user
+    const user = this.props.user
 
     messages.push({
-      //id: `${user.uid}-${Date.now()}`,
-      //user,
+      id: `${user.uid}-${Date.now()}`,
+      user,
       body,
       createdAt: Date.now(),
     })
@@ -62,12 +62,12 @@ class Chat extends Component {
     console.log("room is " +  this.props)
     return (
       <div className="Chat" style={styles}>
-        {/* <ChatHeader
-          room={this.props.room}
-        /> */}
+        { <ChatHeader
+          room={this.props.roomName}
+        /> }
         <MessageList
           messages={this.state.messages}
-          //room={this.props.room}
+          room={this.props.roomName}
         />
         <MessageForm addMessage={this.addMessage} />
       </div>

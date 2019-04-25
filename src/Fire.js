@@ -12,7 +12,7 @@ var config = {
     projectId: "meet-the-others",
     storageBucket: "meet-the-others.appspot.com",
     messagingSenderId: "313507434165"
-}
+};
 const app = firebase.initializeApp(config)
 
 export const auth = firebase.auth()
@@ -20,4 +20,4 @@ export const auth = firebase.auth()
 const db = firebase.database(app)
 const base = Rebase.createClass(db)
 
-export default firebase
+export default base;

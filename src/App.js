@@ -6,13 +6,14 @@ import styled, { keyframes } from 'styled-components';
 import { inherits } from 'util';
 import { withRouter } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {Switch, Redirect} from 'react-router-dom'
+import { Switch, Redirect } from 'react-router-dom'
 import { auth } from './Fire'
 import firebase from './Fire'; // use this when database is implemented
 import Chat from "./Chat";
 import login from "./App";
 import PrivateRoute from "./PrivateRoute";
 import { app } from 'firebase';
+import { EventEmitter } from 'events';
 
 
 // experimental db stuff
@@ -129,7 +130,11 @@ function name() {
 const state = {
   password: "",
   username: "",
-  roomName: "",
+  first: "",
+  second: "",
+  third: "",
+  fourth: "",
+  fifth: "",
   errorMessage: null,
 }
 
@@ -158,11 +163,11 @@ class App extends Component {
     event.preventDefault();
     auth
       .signInWithEmailAndPassword(this.state.username, this.state.password)
-      .then(() => {
-        //console.log("test")
+      // .then(() => {
+      //   //console.log("test")
 
-        this.setState({ ...state })
-      })
+      //   this.setState({ ...state })
+      // })
       .catch(error => this.setState({ errorMessage: "Invalid signin" }))
   }
 
@@ -181,6 +186,11 @@ class App extends Component {
         }
       })
       .catch(error => this.setState({ errorMessage: "Invalid Signup" }))
+    this.setState({ first: event.target.first.value })
+    this.setState({ second: event.target.second.value })
+    this.setState({ third: event.target.third.value })
+    this.setState({ fourth: event.target.fourth.value })
+    this.setState({ fifth: event.target.fifth.value })
   }
 
 
@@ -196,7 +206,10 @@ class App extends Component {
     //console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({ [event.target.id]: event.target.value });
   }
-
+  handleSelect2 = (event) => {
+    //console.log(event.target.id + " and the value is " + event.target.value)
+    this.setState({ [event.target.id]: event.target.value });
+  }
   handleSubmit = (event) => {
     event.preventDefault();
     //console.log(this.state)
@@ -248,29 +261,30 @@ class App extends Component {
     //   firebase.database().ref('users/' + username).set
     // }
     return (
-    
-    <div className = {css(styles.body)}>
 
-      {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
-      <div className = {css(styles.containBlocks)}>
-          <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
-          <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
-     </div>
+      <div className={css(styles.body)}>
+        {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
+        <div className={css(styles.containBlocks)}>
+          <p className={css(styles.FadeAnimations2)}>New User? Start here!</p>
+          <p className={css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
+        </div>
 
-      <div className = {css(styles.containBlocks)}>
-      <div className = {css(styles.blocks)}>
-             <form action="/Chat">
-             <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
-               <label htmlFor="fname" className = {css(styles.label)}>Choose a username!</label>
-               <input type="text" id="username" name="username" placeholder="Username" className = {css(styles.input)} onChange = {this.handleSelect}></input>
+        <div className={css(styles.containBlocks)}>
+          <div className={css(styles.blocks)}>
+            <form onSubmit={this.handleSignUp}>
+              <p className={css(styles.label)}> What do you like to do in the weekend?</p>
 
-               <label htmlFor="password" className = {css(styles.label)}>Create a password!</label>
-               <input type="password" className = {css(styles.input)} onChange = {this.handleSelect} id="password" name="password" placeholder="password"></input>
-   
-               <label htmlFor="first" className = {css(styles.label)}>First</label> 
-                  <select id="first" className = {css(styles.input)} defaultValue="concerts" onChange = {this.handleChange} >
-                  {
-                    options.map((id) => 
+              <label htmlFor="fname" className={css(styles.label)}>Choose a username!</label>
+              <input type="text" id="username" name="username" placeholder="Username" className={css(styles.input)} onChange={this.handleSelect}></input>
+
+              <label htmlFor="password" className={css(styles.label)}>Create a password!</label>
+              <input type="password" className={css(styles.input)} onChange={this.handleSelect} id="password" name="password" placeholder="password"></input>
+
+
+              <label htmlFor="first" className={css(styles.label)}>First</label>
+              <select id="first" className={css(styles.input)} defaultValue="concerts" onChange={this.handleChange} >
+                {
+                  options.map((id) =>
                     <option value={id}>{id}</option>)
                 }
               </select>
@@ -308,7 +322,7 @@ class App extends Component {
               </select>
 
 
-              <button type="submit" value="Submit" onSubmit={this.handleSignUp} > Submit</button>
+              <button type="submit" value="Submit"  > Submit</button>
               <Router>
                 <div>
 
@@ -317,46 +331,50 @@ class App extends Component {
             </form>
           </div>
           <div className={css(styles.blocks)}>
-          <Switch>
             <form onSubmit={this.handleSignIn}>
               <label htmlFor="username" className={css(styles.label)}>
                 Username
                 <input
-                username="username"
-                type="username"
-                placeholder="Username"
-                className={css(styles.input)}/>
+                  username="username"
+                  type="username"
+                  id="username2"
+                  placeholder="Username"
+                  className={css(styles.input)}
+                  value={this.state.username}
+                  onChange={this.handleSelect2} />
               </label>
               {/* <label htmlFor="password" className={css(styles.label)}>
                 Password
                 <input
-                password="password"
-                type="password"
-                placeholder="Password"
-                className={css(styles.input)}/>
-              </label> */}
-              <button type="submit" value="Submit" onSubmit={this.handleSignIn}>Sign In</button>
-              <Router>
+                  password="password"
+                  type="password"
+                  id="password2"
+                  placeholder="Password"
+                  className={css(styles.input)} 
+                  value={this.state.password}
+                  onChange={this.handleSelect2}
+                  />
+              </label>
+              <button type="submit" value="Submit">Sign In</button>
+              {/* <Router>
                 <div>
-                  <Route 
-                  exact path="./Chat" 
-                  component={Chat}
-                  render={()=> (
-                    this.signedIn()
-                    ? <Redirect to="/Chat"/>
-                    : <Redirect to="/App"/>
-                  )}/>
+                  <Route
+                    exact path="/"
+                    component={Chat}
+                    render={() => (
+                      this.signedIn()
+                        ? <Redirect to="/Chat" />
+                        : <Redirect to="/" />
+                    )} />
                 </div>
-              </Router>
+              </Router> */}
             </form>
-            </Switch>
+
           </div>
         </div>
       </div>
     );
   }
-
-
 }
 
 
