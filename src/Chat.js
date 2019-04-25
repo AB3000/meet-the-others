@@ -5,6 +5,10 @@ import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 import App from './App'
 import fire from './Fire'
+import firebase from 'firebase'
+
+
+var userId = "";
 
 class Chat extends Component {
   constructor() {
@@ -14,6 +18,11 @@ class Chat extends Component {
       messages: [],
     }
   }
+
+  // ionViewDidLoad(){
+  //   console.log("I'M IN HERE");
+  //   // this.userId = fire.auth().currentUser.uid;
+  // }
   
   componentDidMount() {
     this.syncMessages()
@@ -45,9 +54,12 @@ class Chat extends Component {
   }
 
   addMessage = (body) => {
+
     const messages = [...this.state.messages]
     const user = this.props.user
 
+
+    console.log("user is " + user);
     messages.push({
       id: `${user.uid}-${Date.now()}`,
       user,
@@ -59,6 +71,7 @@ class Chat extends Component {
   }
 
   render() {
+    // {this.ionViewDidLoad()};
     console.log("room is " +  this.props)
     return (
       <div className="Chat" style={styles}>
