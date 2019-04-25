@@ -14,6 +14,7 @@ import login from "./App";
 import PrivateRoute from "./PrivateRoute";
 import { app } from 'firebase';
 import { EventEmitter } from 'events';
+import { database } from 'firebase-admin';
 
 
 // experimental db stuff
@@ -68,6 +69,7 @@ var options = (list.get("nature").concat(list.get("city"))).concat(list.get("ind
 
 var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fill
 var roomName = "nature";
+var fb = firebase.database();
 // console.log(list.get("nature"));
 
 //determines the roomname of the room the user will be redirected to 
@@ -140,6 +142,7 @@ const state = {
   fifth: "",
   errorMessage: null,
 }
+var admin = require('firebase-admin').initializeApp
 
 // console.log("jdksaljdlas");
 class App extends Component {
@@ -172,19 +175,30 @@ class App extends Component {
       })
       .then((e) => {
         console.log("signed in")
+        console.log(this.state.username2.uid)
         window.location = window.location.protocol + "//" + window.location.host + "/Chat"
+        if(this.state.username2){
+          this.props.getElementById({
+            username: this.state.props.username2.uid
+          })
+        }
       })
   }
 
   handleSignUp = (event) => {
     event.preventDefault();
+    // admin.auth().createUser({
+    //   username: this.state.username,
+    //   password: this.state.password
+    // })
+
     auth
       .createUserWithEmailAndPassword(this.state.username, this.state.password)
       .then(() => {
         //console.log("test")
         //this.setState({...this.state})
         if (this.state.username) {
-          this.props.updateUser({
+          this.props.createUser({
             username: this.state.username,
             password: this.state.password
           })
@@ -198,7 +212,6 @@ class App extends Component {
     this.setState({ fifth: event.target.fifth.value })
   }
 
-
   //const {username, password} = event.target.id
   // try {
   //   const user = await login.auth.signInWithEmailAndPassword(username.value, password.value)
@@ -206,7 +219,7 @@ class App extends Component {
   // }catch (error){
   //   alert(error)
   // };
-
+  
   handleUsername = (event) => {
     //console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({ [event.target.id]: event.target.value });
@@ -242,8 +255,6 @@ class App extends Component {
     ))
   }
 
-
-
   componentWillMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -261,6 +272,7 @@ class App extends Component {
       }
     });
   }
+
 
   render() {
     const { first, second, third, fourth, fifth, password, username, errorMessage } = this.state;
