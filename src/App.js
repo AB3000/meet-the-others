@@ -138,6 +138,7 @@ const state = {
   fourth: "",
   fifth: "",
   errorMessage: null,
+  hidden: true,
 }
 
 // console.log("jdksaljdlas");
@@ -149,6 +150,13 @@ class App extends Component {
     this.state = {
       ...state
     }
+  }
+
+   /*for making the welcome/landing page disappear on click*/
+  toggleHidden () {
+    this.setState({
+      hidden: !this.state.hidden
+    })
   }
 
   signedIn = () => {
@@ -267,13 +275,22 @@ class App extends Component {
     //   firebase.database().ref('users/' + username).set
     // }
     return (
-
+      
       <div className={css(styles.body)}>
-        
+     
+
+     <div>
+         {!this.state.isHidden && <Child/>}
+        <button onClick={this.toggleHidden.bind(this)} >
+          Click here to start!
+        </button>
+      </div>
+      {/* <div>
         <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
         <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
         to others based on what you like to do during the weekend!</p>
         <button type="submit">Click here to start!</button>
+      </div> */}
         
 
         <div className={css(styles.containBlocks)}>
@@ -385,6 +402,15 @@ class App extends Component {
 }
 
 
+const Child = () => (
+  <div>
+        <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
+        <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
+        to others based on what you like to do during the weekend!</p>
+        {/* <button type="submit">Click here to start!</button> */}
+  </div>
+  )
+  
 const styles = StyleSheet.create({
 
   html: {
