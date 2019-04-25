@@ -22,10 +22,10 @@ scrollToBottom =() =>{
           className="roomAnnouncement"
           style={styles.roomAnnouncement}
         >
-          <h3 style={styles.h3}>
+          {/* <h3 style={styles.h3}>
              #{roomName} 
           </h3>
-          <p>This is the very beginning of the #{roomName}.</p>
+          <p>This is the very beginning of the #{roomName}.</p> */}
         </div>
 
         {
@@ -48,14 +48,15 @@ scrollToBottom =() =>{
 
 const styles = {
   messageList: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
+    color: 'white',
     flex: 1,
     paddingBottom: '1rem',
     overflowY: 'scroll',
   },
 
   roomAnnouncement: {
-    padding: '2rem 1rem',
+    padding: '2px 1px',
   },
 
   h3: {

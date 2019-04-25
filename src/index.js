@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import app from "firebase";
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 import App from './App';
 import Chat from './Chat';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
