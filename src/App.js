@@ -198,8 +198,9 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state)
+    //console.log(this.state)
     name(); //get the roomname user will be assigned to
+    console.log("this is the room " + roomName.value);
     this.props.history.push("/Chat");
   }
   renderOptions() {
@@ -246,6 +247,31 @@ class App extends Component {
     //   firebase.database().ref('users/' + username).set
     // }
     return (
+<<<<<<< HEAD
+    
+    <div className = {css(styles.body)}>
+      {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
+      <div className = {css(styles.containBlocks)}>
+          <p className = {css(styles.FadeAnimations2)}>New User? Start here!</p>
+          <p className = {css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
+     </div>
+
+      <div className = {css(styles.containBlocks)}>
+      <div className = {css(styles.blocks)}>
+             <form action="/Chat">
+             <p className = {css(styles.label)}> What do you like to do in the weekend?</p>
+               <label htmlFor="fname" className = {css(styles.label)}>Choose a username!</label>
+               <input type="text" id="username" name="username" placeholder="Username" className = {css(styles.input)} onChange = {this.handleSelect}></input>
+
+               {/* <label htmlFor="password" className = {css(styles.label)}>Create a password!</label>
+               <input type="password" className = {css(styles.input)} onChange = {this.handleSelect} id="password" name="password" placeholder="password"></input> */}
+   
+
+               <label htmlFor="first" className = {css(styles.label)}>First</label> 
+                  <select id="first" className = {css(styles.input)} defaultValue="concerts" onChange = {this.handleChange} >
+                  {
+                    options.map((id) => 
+=======
 
       <div className={css(styles.body)}>
         {/* <p className = {css(styles.FadeAnimations)}> Welcome!</p> */}
@@ -269,6 +295,7 @@ class App extends Component {
               <select id="first" className={css(styles.input)} defaultValue="concerts" onChange={this.handleChange} >
                 {
                   options.map((id) =>
+>>>>>>> 42e938f4d2651ac4f1df5f4d46fe436a4514a231
                     <option value={id}>{id}</option>)
                 }
               </select>
@@ -312,6 +339,23 @@ class App extends Component {
 
                 </div>
               </Router>
+<<<<<<< HEAD
+           </form>
+      </div>
+      <div className = {css(styles.blocks)}>
+             <form action="/Chat">
+               <label htmlFor="name" className = {css(styles.label)}>Username</label>
+               <input type="text" id="uNameLogin" name="username" placeholder="username" className = {css(styles.input)} onChange={this.handleChange}></input>
+           
+               {/* <label htmlFor="password" className = {css(styles.label)}>Password</label> */}
+               {/* <input type="password" className = {css(styles.input)} id="password" name="password" placeholder="password" onChange={this.handleChange}></input>
+               <button type="submit" value="Submit" onSubmit = {this.handleSubmit}> Submit</button> */}
+               <Route>
+                 <div>
+                 </div>
+               </Route>
+           </form>
+=======
             </form>
           </div>
           <div className={css(styles.blocks)}>
@@ -349,6 +393,7 @@ class App extends Component {
             </form>
             </Switch>
           </div>
+>>>>>>> 42e938f4d2651ac4f1df5f4d46fe436a4514a231
         </div>
       </div>
     );
