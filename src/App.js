@@ -155,7 +155,7 @@ class App extends Component {
    /*for making the welcome/landing page disappear on click*/
   toggleHidden () {
     this.setState({
-      hidden: !this.state.hidden
+      hidden: !this.state.hidden,
     })
   }
 
@@ -279,12 +279,12 @@ class App extends Component {
       <div className={css(styles.body)}>
      
 
-     <div>
-         {!this.state.isHidden && <Child/>}
+       <div>
+         {!this.state.hidden && <Child/>}
         <button onClick={this.toggleHidden.bind(this)} >
           Click here to start!
         </button>
-      </div>
+       </div>
       {/* <div>
         <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
         <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
@@ -292,7 +292,6 @@ class App extends Component {
         <button type="submit">Click here to start!</button>
       </div> */}
         
-
         <div className={css(styles.containBlocks)}>
           <p className={css(styles.FadeAnimations2)}>New User? Start here!</p>
           <p className={css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
