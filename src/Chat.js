@@ -4,7 +4,7 @@ import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 import App from './App'
-import base from './Fire'
+import fire from './Fire'
 
 class Chat extends Component {
   constructor() {
@@ -20,22 +20,22 @@ class Chat extends Component {
   }
 
   componentDidUpdate(prevProps, _prevState, _snapshot){
-    if(prevProps.room.name !== this.props.room){
+    if(prevProps.roomName !== this.props.room){
       this.syncMessages()
     }
   }
 
   componentWillUnmount() {
-    base.removeBinding(this.messagesRef)
+    fire.removeBinding(this.messagesRef)
   }
 
   syncMessages = () => {
     //Stop syncing with the current endpoint
     if(this.messagesRef){
-      base.removeBinding(this.messagesRef)
+      fire.removeBinding(this.messagesRef)
     }
-    this.messagesRef = base.syncState(
-      `messages/${this.props.room.name}`,
+    this.messagesRef = fire.syncState(
+      `messages/${this.props.roomName}`,
       {
         context: this,
         state: 'messages',
@@ -46,11 +46,11 @@ class Chat extends Component {
 
   addMessage = (body) => {
     const messages = [...this.state.messages]
-    //const user = this.props.user
+    const user = this.props.user
 
     messages.push({
-      //id: `${user.uid}-${Date.now()}`,
-      //user,
+      id: `${user.uid}-${Date.now()}`,
+      user,
       body,
       createdAt: Date.now(),
     })
@@ -62,12 +62,12 @@ class Chat extends Component {
     console.log("room is " +  this.props)
     return (
       <div className="Chat" style={styles}>
-        {/* <ChatHeader
-          room={this.props.room}
-        /> */}
+        { <ChatHeader
+          room={this.props.roomName}
+        /> }
         <MessageList
           messages={this.state.messages}
-          //room={this.props.room}
+          room={this.props.roomName}
         />
         <MessageForm addMessage={this.addMessage} />
       </div>
