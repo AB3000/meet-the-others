@@ -26,19 +26,20 @@ import { EventEmitter } from 'events';
 //   username  (string)
 //   password  (string)
 //   interests (string[5])
-// var createUser = (username, password, interests) => {
-//   var lukepassword = db.ref('users/lukecheng/password')
-//   lukepassword.on('value', (p) => {
-//     window.alert(p)
-//   })
-// }
 
 
+// idk how firebase works so im gonna use this to test it out
+/*
+var createUser = (username, password, interests) => {
+  var lukepassword = db.ref('users/lukecheng/password')
+  lukepassword.on('value', (p) => {
+    window.alert(p)
+  })
+}
+*/
+// 
 
-// var lukepassword = firebase.database().ref('users/lukecheng/password')
-// lukepassword.on('value', (p) => {
-//   window.alert(p)
-// })
+
 /*SIGN IN*/
 //We will have to get this from the data base itself, and set vars accordingly and then compare with the input some how
 
@@ -162,13 +163,15 @@ class App extends Component {
   handleSignIn = (event) => {
     event.preventDefault();
     auth
-      .signInWithEmailAndPassword(this.state.username, this.state.password)
-      // .then(() => {
-      //   //console.log("test")
-
-      //   this.setState({ ...state })
-      // })
-      .catch(error => this.setState({ errorMessage: "Invalid signin" }))
+      .signInWithEmailAndPassword(this.state.username2, this.state.password2)
+      .catch((error) => {
+        window.alert(error)
+        this.setState({ errorMessage: "Invalid signin" })
+      })
+      .then((e) => {
+        console.log("signed in")
+        window.location = window.location.protocol + "//" + window.location.host + "/Chat"
+      })
   }
 
   handleSignUp = (event) => {
@@ -202,14 +205,15 @@ class App extends Component {
   //   alert(error)
   // };
 
-  handleSelect = (event) => {
+  handleUsername = (event) => {
     //console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({ [event.target.id]: event.target.value });
   }
-  handleSelect2 = (event) => {
+  handlePassword = (event) => {
     //console.log(event.target.id + " and the value is " + event.target.value)
     this.setState({ [event.target.id]: event.target.value });
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     //console.log(this.state)
@@ -217,6 +221,7 @@ class App extends Component {
     console.log("this is the room " + roomName.value);
     this.props.history.push("/Chat");
   }
+
   renderOptions() {
     return options.map((o) => (
       <option key={o} value={o}>{o}</option>
@@ -271,15 +276,14 @@ class App extends Component {
 
         <div className={css(styles.containBlocks)}>
           <div className={css(styles.blocks)}>
-            <form onSubmit={this.handleSignUp}>
+            <form onSubmit={(e) => this.handleSignUp(e)}>
               <p className={css(styles.label)}> What do you like to do in the weekend?</p>
 
               <label htmlFor="fname" className={css(styles.label)}>Choose a username!</label>
-              <input type="text" id="username" name="username" placeholder="Username" className={css(styles.input)} onChange={this.handleSelect}></input>
+              <input type="text" id="username" name="username" placeholder="Username" className={css(styles.input)} onChange={this.handleUsername}></input>
 
               <label htmlFor="password" className={css(styles.label)}>Create a password!</label>
-              <input type="password" className={css(styles.input)} onChange={this.handleSelect} id="password" name="password" placeholder="password"></input>
-
+              <input type="password" className={css(styles.input)} onChange={this.handlePassword} id="password" name="password" placeholder="password"></input>
 
               <label htmlFor="first" className={css(styles.label)}>First</label>
               <select id="first" className={css(styles.input)} defaultValue="concerts" onChange={this.handleChange} >
@@ -320,9 +324,7 @@ class App extends Component {
                     <option value={id}>{id}</option>)
                 }
               </select>
-
-
-              <button type="submit" value="Submit"  > Submit</button>
+              <input type="submit" value="Submit" />
               <Router>
                 <div>
 
@@ -331,31 +333,29 @@ class App extends Component {
             </form>
           </div>
           <div className={css(styles.blocks)}>
-            <form onSubmit={this.handleSignIn}>
+            <form onSubmit={(e) => this.handleSignIn(e)}>
               <label htmlFor="username" className={css(styles.label)}>
                 Username
-                <input
-                  username="username"
-                  type="username"
+                <input 
+                  type="text"
                   id="username2"
                   placeholder="Username"
                   className={css(styles.input)}
-                  value={this.state.username}
-                  onChange={this.handleSelect2} />
+                  value={this.state.username2}
+                  onChange={this.handleUsername} />
               </label>
-              {/* <label htmlFor="password" className={css(styles.label)}>
+              <label htmlFor="password" className={css(styles.label)}>
                 Password
                 <input
-                  password="password"
                   type="password"
                   id="password2"
                   placeholder="Password"
                   className={css(styles.input)} 
-                  value={this.state.password}
-                  onChange={this.handleSelect2}
+                  value={this.state.password2}
+                  onChange={this.handlePassword}
                   />
               </label>
-              <button type="submit" value="Submit">Sign In</button>
+              <input type="submit" value="Sign in" />
               {/* <Router>
                 <div>
                   <Route
