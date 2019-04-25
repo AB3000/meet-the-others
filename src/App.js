@@ -404,7 +404,7 @@ const styles = StyleSheet.create({
     animationName: 'fadein',
     animationDuration: '5s',
     textAlign: 'center',
-    color: '#95eff9',
+    color: '#4c3a1f',
     fontSize: '30px',
     paddingLeft: '20px',
     paddingRight: '20px',
