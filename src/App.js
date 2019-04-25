@@ -14,6 +14,7 @@ import login from "./App";
 import PrivateRoute from "./PrivateRoute";
 import { app } from 'firebase';
 import { EventEmitter } from 'events';
+// import { Button } from 'react-native-elements';
 
 
 // experimental db stuff
@@ -272,6 +273,8 @@ class App extends Component {
         <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
         <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
         to others based on what you like to do during the weekend!</p>
+        <button type="submit">Click here to start!</button>
+        
 
         <div className={css(styles.containBlocks)}>
           <p className={css(styles.FadeAnimations2)}>New User? Start here!</p>
