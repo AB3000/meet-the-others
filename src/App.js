@@ -131,6 +131,8 @@ function name() {
 const state = {
   password: "",
   username: "",
+  password2: "",
+  username2: "",
   first: "",
   second: "",
   third: "",
