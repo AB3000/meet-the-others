@@ -48,7 +48,8 @@ scrollToBottom =() =>{
 
 const styles = {
   messageList: {
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
+    color: 'white',
     flex: 1,
     paddingBottom: '1rem',
     overflowY: 'scroll',

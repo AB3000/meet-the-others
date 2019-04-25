@@ -138,6 +138,7 @@ const state = {
   third: "",
   fourth: "",
   fifth: "",
+  roomName: "",
   errorMessage: null,
 }
 
@@ -221,7 +222,7 @@ class App extends Component {
     //console.log(this.state)
     name(); //get the roomname user will be assigned to
     console.log("this is the room " + roomName.value);
-    this.props.history.push("/Chat");
+    // this.props.history.push("/Chat");
   }
 
   renderOptions() {

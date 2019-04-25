@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-
+import { StyleSheet, css } from 'aphrodite';
+import styled, { keyframes } from 'styled-components';
 import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 import App from './App'
+import './Chat.css'
 import fire from './Fire'
 import firebase from 'firebase'
 
@@ -56,43 +58,57 @@ class Chat extends Component {
   addMessage = (body) => {
 
     const messages = [...this.state.messages]
-    const user =  firebase.auth.id;
-    console.log("this.props.user is " + user);
-
+    const user =  "65GnB06eh7dDvufZ3rN7R2UHWZC3";
+    // console.log("this.props.user is " + this.props.);
+    // console.log ("this.props.roomName is " + this.props.roomName);
 
     console.log("user is " + user);
     messages.push({
-      id: `${user.uid}-${Date.now()}`,
+      // id: `${user.uid}-${Date.now()}`,
       user,
       body,
       createdAt: Date.now(),
     })
+
+    console.log ("message length is " + messages.length + "and messages is" + messages[1]);
 
     this.setState({ messages })
   }
 
   render() {
     // {this.ionViewDidLoad()};
-    console.log("room is " +  this.props)
+    // console.log("room is  " +  this.props)
     return (
-      <div className="Chat" style={styles}>
+      <div className={css(styles.body)}>
+      <div className="Chat" className={css(styles.style)}>
         { <ChatHeader
           room={this.props.roomName}
         /> }
         <MessageList
           messages={this.state.messages}
+      
           room={this.props.roomName}
         />
         <MessageForm addMessage={this.addMessage} />
+      </div>
       </div>
     )
   }
 }
 
-const styles = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-}
+const styles = StyleSheet.create({
+
+  body: {
+    backgroundColor: 'black',
+    // overflow: 'auto',
+    overflow: 'hidden',
+  },
+
+  style: {
+       flex: 1,
+      display: 'flex',
+      flexDirection: 'column',
+  },
+})
 
 export default Chat
