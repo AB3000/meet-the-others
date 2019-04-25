@@ -429,7 +429,7 @@ const styles = StyleSheet.create({
     color: '#4c3a1f',
     fontSize: '50px',
     width: '100%',
-    padding: '10px',
+    // padding: '15px 15px',
     
     // backgroundColor: 'rgba(201, 255, 252, 0.5)'
   },
