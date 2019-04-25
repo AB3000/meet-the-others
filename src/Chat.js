@@ -5,6 +5,7 @@ import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 import App from './App'
 import fire from './Fire'
+import {auth} from './Fire'
 import firebase from 'firebase'
 
 
@@ -56,7 +57,8 @@ class Chat extends Component {
   addMessage = (body) => {
 
     const messages = [...this.state.messages]
-    const user =  firebase.auth.id;
+    //const user =  firebase.auth.id;
+    const user = auth.currentUser
     console.log("this.props.user is " + user);
 
 
