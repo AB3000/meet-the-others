@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 import { app } from 'firebase';
 import { EventEmitter } from 'events';
 import { database } from 'firebase-admin';
+import { write } from 'fs';
 
 
 // experimental db stuff
@@ -69,7 +70,6 @@ var options = (list.get("nature").concat(list.get("city"))).concat(list.get("ind
 
 var IDs = ["first", "second", "third", "fourth", "fifth"]; //five options to fill
 var roomName = "nature";
-var fb = firebase.database();
 // console.log(list.get("nature"));
 
 //determines the roomname of the room the user will be redirected to 
@@ -128,7 +128,13 @@ function name() {
   }
 
 }
-
+// function writeUserData(userId, user, password){
+//   console.log("does this work")
+//   firebase.database().ref('users/' + userId).set({
+//     username: user,
+//     password: password
+//   })
+// }
 
 const state = {
   password: "",
@@ -191,7 +197,7 @@ class App extends Component {
     //   username: this.state.username,
     //   password: this.state.password
     // })
-
+    // writeUserData(this.state.username.uid, this.state.username, this.state.password)
     auth
       .createUserWithEmailAndPassword(this.state.username, this.state.password)
       .then(() => {
@@ -212,6 +218,45 @@ class App extends Component {
     this.setState({ fifth: event.target.fifth.value })
   }
 
+  handleAuth = (oAuthUser) => {
+    const user = {
+      uid: oAuthUser.uid || oAuthUser.username,
+      username: oAuthUser.username
+    }
+    this.syncUser(user)
+    localStorage.setItem('user', JSON.stringify(user))
+  }
+
+  syncUser = user => {
+    this.userRef = firebase.syncState(
+      `users/${this.state.user.uid}`,
+      {
+        context: this,
+        state: 'user',
+        then: () => this.setState({ user })
+      }
+    )
+  }
+
+  updateUser = userData => {
+    const attributes = ['username', 'uid', 'password']
+    const user = {...this.state.username}
+    Object.keys(userData).forEach(
+      attribute => {
+        if (attributes.indexOf(attribute) === -1) {
+          user[attribute] = userData[attribute]
+        }
+      }
+    )
+    this.setState({ user })
+  }
+  handleUnauth = () => {
+    if(this.userRef){
+      firebase.removeBinding(this.userRef)
+    }
+    this.setState({user: {}})
+    localStorage.removeItem('user')
+  }
   //const {username, password} = event.target.id
   // try {
   //   const user = await login.auth.signInWithEmailAndPassword(username.value, password.value)
