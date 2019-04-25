@@ -56,7 +56,8 @@ class Chat extends Component {
   addMessage = (body) => {
 
     const messages = [...this.state.messages]
-    const user = this.props.user
+    const user =  firebase.auth().currentUser;
+    console.log("this.props.user is " + user.id);
 
 
     console.log("user is " + user);
