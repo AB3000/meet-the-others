@@ -280,18 +280,15 @@ class App extends Component {
      
 
        <div>
-         {!this.state.hidden && <Child/>}
-        <button onClick={this.toggleHidden.bind(this)} >
-          Click here to start!
+         {this.state.hidden && <Child/>}
+         <button onClick={this.toggleHidden.bind(this)} >
+              Click here to start!
         </button>
        </div>
-      {/* <div>
-        <p className = {css(styles.FadeAnimations)}> Meet The Others!</p>
-        <p className={css(styles.FadeAnimations3)}>Meet The Others is an app that connects you 
-        to others based on what you like to do during the weekend!</p>
-        <button type="submit">Click here to start!</button>
-      </div> */}
-        
+
+
+        <div>
+        {!this.state.hidden}
         <div className={css(styles.containBlocks)}>
           <p className={css(styles.FadeAnimations2)}>New User? Start here!</p>
           <p className={css(styles.FadeAnimations2)}>Already have an account? Login here!</p>
@@ -394,6 +391,7 @@ class App extends Component {
             </form>
 
           </div>
+         </div>
         </div>
       </div>
     );
