@@ -279,8 +279,6 @@ class App extends Component {
     return (
       
       <div className={css(styles.body)}>
-     
-
        <div>
          {this.state.hidden && <Child/>}
          <button onClick={this.toggleHidden.bind(this)} >
@@ -288,10 +286,9 @@ class App extends Component {
         </button>
        </div>
 
-       <div>
-
-       </div>
-       {!this.state.hidden && <Child2/>}
+        <div>
+          {!this.state.hidden && <Child2/>}
+        </div>
       </div>
     );
   }
@@ -389,6 +386,7 @@ const Child2 = () => (
               <input type="submit" value="Sign in" />
               {/* <Router>
                 <div>
+
                   <Route
                     exact path="/"
                     component={Chat}
@@ -425,8 +423,9 @@ const styles = StyleSheet.create({
 
   body: {
     // backgroundColor: 'black',
+    // overflow: 'auto',
     overflow: 'hidden',
-    // backgroundColor: 'rgba(201, 255, 252, 0.3)'
+    backgroundColor: 'rgba(201, 255, 252, 0.3)'
   },
 
   FadeAnimations: {
