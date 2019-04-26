@@ -398,8 +398,8 @@ class App extends Component {
                   onChange={this.handlePassword}
                   />
               </label>
-              <input type="submit" style = {{color: '#4c3a1f', backgroundColor: 'black', height: '40px',
-                      fontSize: '20px',  width: '150px', border: 'none', boxShadow: ' 5px 5px 8px 5px #888888'}}value="Sign in" />
+              <input type="submit" style = {{color: '#888888', backgroundColor: 'black', height: '40px',
+                      fontSize: '20px',  width: '150px', border: 'none', boxShadow: ' 8px 5px 5px 5px #888888'}}value="Sign in" />
               {/* <Router>
                 <div>
 
