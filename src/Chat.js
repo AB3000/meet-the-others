@@ -74,7 +74,7 @@ class Chat extends Component {
 
   renderMessages() {
     return this.state.messages.map((m) => (
-      <li>{"(I prefer the " + m.room + " life) " + m.date + " " + m.user + ": " + m.text}</li>
+      <li>{"(I prefer the " + m.room + " life) " + m.user + ": " + m.text + " sent at "}</li>
     ))
   }
 
