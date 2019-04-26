@@ -66,7 +66,7 @@ class Chat extends Component {
   sendMessage() {
     db.ref('messages/' + shortid.generate()).set({
       user: this.state.user.email, // users dont have names rn
-      time: new Date().toISOString(),
+      //time: new Date().toISOString(),
       text: this.state.textBox,
       room: this.state.room
     })
@@ -74,14 +74,14 @@ class Chat extends Component {
 
   renderMessages() {
     return this.state.messages.map((m) => (
-      <li>{"(I prefer the " + m.room + " life) " + m.user + ": " + m.text + " sent at "}</li>
+      <li>{"(I prefer the " + m.room + " life) " + m.user + ": " + m.text}</li>
     ))
   }
 
   render() {
     return (
       <div style={{backgroundColor: 'black', padding: 
-            '20px', color: 'white', overflowY: 'scroll', fontSize: '20px'}}>
+            '20px', color: 'white', overflowY: 'scroll'}}>
         <ul>{this.renderMessages()}</ul>
         <form onSubmit={this.handleSubmit}>
           <input type="text" style = {{color: '#888888', backgroundColor: 'white', height: '40%',
