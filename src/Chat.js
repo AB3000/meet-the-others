@@ -26,25 +26,30 @@ class Chat extends Component {
   componentDidMount() {
     var user = auth.currentUser
     if (user) {
-      this.setState({ user: user, room: user.photoURL }) // storing room info in photoURL
-    } 
-    else {
+      this.setState({ user: user, room: user.photoURL }) // storing room info in photoURL may need to change later
+    } else {
       window.alert("Sign in error occured. Please sign in again.")
       window.location = window.location.protocol + "//" + window.location.host
     }
 
-    db.ref('messages').orderByValue().on('value', (s) => {
-      var messages = s.val()
-     
-      let newState = []
-      for (let id in messages) {
-        newState.push(messages[id])
-        console.log("messages[id] " + messages[id].toISOString);
-      }
+    db.ref('messages').orderByChild('time').on('value', (s) => {
+      let newState = [];
+      //var messages = s.val()
+      s.forEach(symS => {
+        let messages = symS.val();
+        newState.push({
+          room: messages.room,
+          date: messages.time,
+          user: messages.user,
+          text: messages.text
+        })
+      })
+      // let newState = []
+      // for (let id in messages) {
+      //   newState.push(messages[id])
+      // }
       this.setState({messages: newState})
     })
-
-
   }
 
   handleChange(e) {
@@ -59,37 +64,17 @@ class Chat extends Component {
   }
 
   sendMessage() {
-
     db.ref('messages/' + shortid.generate()).set({
       user: this.state.user.email, // users dont have names rn
       time: new Date().toISOString(),
       text: this.state.textBox,
-      room: this.state.room,
+      room: this.state.room
     })
-
-    firebase.database().ref('messages').orderByChild('date');
-
-    db.ref('messages').orderByChild('date');
-    // db.ref('messages').orderByValue().on('value', (s) => {
-    //   var messages = s.val()
-     
-    //   let newState = []
-    //   for (let id in messages) {
-    //     newState.push(messages[id])
-    //   }
-    //   this.setState({messages: newState})
-      
-    // })
-    
-
-
-
   }
 
   renderMessages() {
     return this.state.messages.map((m) => (
-      <li style = {{listStyleType: 'none'}}>
-      {"(I prefer the " + m.room + " life) " + m.user + ": " + m.text + " " + m.time}</li>
+      <li>{"(I prefer the " + m.room + " life) " + m.date + " " + m.user + ": " + m.text}</li>
     ))
   }
 
@@ -108,7 +93,21 @@ class Chat extends Component {
     )
   }
 }
+const styles = StyleSheet.create({
 
+  body: {
+    backgroundColor: 'black',
+    // overflow: 'auto',
+    overflow: 'hidden',
+  },
+
+  style: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    overflow: 'hidden',
+  },
+})
 /*
 var userId = "";
 
