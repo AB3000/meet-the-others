@@ -35,12 +35,16 @@ class Chat extends Component {
 
     db.ref('messages').orderByValue().on('value', (s) => {
       var messages = s.val()
+     
       let newState = []
       for (let id in messages) {
         newState.push(messages[id])
+        console.log("messages[id] " + messages[id].toISOString);
       }
       this.setState({messages: newState})
     })
+
+
   }
 
   handleChange(e) {
@@ -55,17 +59,37 @@ class Chat extends Component {
   }
 
   sendMessage() {
+
     db.ref('messages/' + shortid.generate()).set({
       user: this.state.user.email, // users dont have names rn
       time: new Date().toISOString(),
       text: this.state.textBox,
-      room: this.state.room
+      room: this.state.room,
     })
+
+    firebase.database().ref('messages').orderByChild('date');
+
+    db.ref('messages').orderByChild('date');
+    // db.ref('messages').orderByValue().on('value', (s) => {
+    //   var messages = s.val()
+     
+    //   let newState = []
+    //   for (let id in messages) {
+    //     newState.push(messages[id])
+    //   }
+    //   this.setState({messages: newState})
+      
+    // })
+    
+
+
+
   }
 
   renderMessages() {
     return this.state.messages.map((m) => (
-      <li>{"(I prefer the " + m.room + " life) " + m.time + " " + m.user + ": " + m.text}</li>
+      <li style = {{listStyleType: 'none'}}>
+      {"(I prefer the " + m.room + " life) " + m.user + ": " + m.text + " " + m.time}</li>
     ))
   }
 
