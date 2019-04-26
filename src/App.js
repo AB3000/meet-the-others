@@ -367,7 +367,8 @@ class App extends Component {
                     <option value={id}>{id}</option>)
                 }
               </select>
-              <input type="submit" value="Submit" />
+              <input type="submit" style = {{color: '#888888', backgroundColor: 'black', height: '40px',
+                      fontSize: '20px',  width: '150px', border: 'none', boxShadow: ' 8px 5px 5px 5px #888888'}} value="Submit" />
               <Router>
                 <div>
 
