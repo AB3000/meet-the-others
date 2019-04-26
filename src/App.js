@@ -398,8 +398,8 @@ class App extends Component {
                   onChange={this.handlePassword}
                   />
               </label>
-              <input type="submit" style = {{color: 'black', backgroundColor: 'black', border: 'none',
-                         width: '100px', height: '25px'}} value="Sign in" />
+              <input type="submit" style = {{color: '#4c3a1f', backgroundColor: 'black', height: '40px',
+                      fontSize: '20px',  width: '150px', border: 'none'}}value="Sign in" />
               {/* <Router>
                 <div>
 
@@ -434,6 +434,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'black',
     // overflow: 'auto',
     overflow: 'hidden',
+    backgroundColor: 'rgba(221, 255, 247, 0.3)'
+
   },
 
   FadeAnimations: {
