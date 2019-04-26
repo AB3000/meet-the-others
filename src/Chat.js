@@ -74,8 +74,10 @@ class Chat extends Component {
             '20px', color: 'white', overflowY: 'scroll'}}>
         <ul>{this.renderMessages()}</ul>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange}></input>
-          <input type="submit" value="send"></input>
+          <input type="text" style = {{color: '#888888', backgroundColor: 'white', height: '40%',
+            fontSize: '20px',  width: '50%', border: 'none'}}onChange={this.handleChange}></input>
+          <input type="submit"style = {{color: 'black', backgroundColor: 'pink', height: '40%',
+            fontSize: '20px',  width: '20%', border: 'none'}} value="send"></input>
         </form>
       </div>
     )
