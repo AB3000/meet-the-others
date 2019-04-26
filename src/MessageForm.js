@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
+import './Chat.css'
+
 
 class MessageForm extends Component {
   state = {
@@ -56,6 +58,12 @@ const styles = StyleSheet.create({
     borderRadius: '0.5rem',
     margin: '0.25rem',
     padding: 0,
+    position: 'fixed',
+    left: '0px',
+    bottom: '0px',
+    height: '30px',
+    width: '100%' ,
+    background: '#999' ,
   },
 
   icon: {

@@ -5,14 +5,13 @@
   "dependencies": {
     "aphrodite": "^2.3.1",
     "firebase": "^5.10.0",
-    "firebase-admin": "^7.3.0",
-    "http2": "^3.3.7",
     "re-base": "^4.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "rebase": "^0.3.0",
+    "shortid": "^2.2.14",
     "styled-components": "^4.2.0",
     "typescript": "^3.4.3",
     "yarn": "^1.15.2"

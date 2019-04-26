@@ -1,7 +1,29 @@
 html, body {
   margin: 0px;
   padding: 0px;
+  /* height: 100%;
+  margin: 0; */
 } 
+
+
+body{
+
+    /* The image used */
+
+    background-image: url(socializing.jpg);
+    /* background-color: rgba(0, 0, 0, 1); */
+
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 
 /* .App {
   text-align: center;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChatHeader = ({ room }) => {
+const ChatHeader = ({ roomName }) => {
   return (
     <header
       className="ChatHeader"
@@ -8,11 +8,8 @@ const ChatHeader = ({ room }) => {
     >
       <div className="roomInfo">
         <h2 style={styles.h2}>
-          #{room.name}
+          #{roomName}
         </h2>
-        <p style={styles.p}>
-          {room.description}
-        </p>
       </div>
     </header>
   )
