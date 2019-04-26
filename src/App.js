@@ -502,7 +502,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: '20px',
     margin: '8px 0',
-    height: '30px',
+    height: '40px',
     display: 'inline-block',
     border: '1px solid #ccc',
     borderRadius: '8px',
