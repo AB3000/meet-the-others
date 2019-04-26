@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
+
 import Message from './Message'
 
 class MessageList extends Component {
-componentDidUpdate(prevProps){
-  if(prevProps.messages.length<this.props.messages.length)
-   this.scrollToBottom()
-}
+// componentDidUpdate(prevProps){
+//   if(prevProps.messages.length<this.props.messages.length)
+//    this.scrollToBottom()
+// }
 
 scrollToBottom =() =>{
   this.messagesEnd.scrollIntoView({behavior:'smooth'})
 }
 
   render(){
-    const {messages, roomName} = this.props
+    const {messages} = this.props
     return (
       <div
         className="MessageList"
@@ -22,10 +23,11 @@ scrollToBottom =() =>{
           className="roomAnnouncement"
           style={styles.roomAnnouncement}
         >
-          {/* <h3 style={styles.h3}>
-             #{roomName} 
+          <h3 style={styles.h3}>
+            {/* #{room.name} */}
+            Hello Room
           </h3>
-          <p>This is the very beginning of the #{roomName}.</p> */}
+          <p>This is the very beginning of the Hello room.</p>
         </div>
 
         {
@@ -36,10 +38,8 @@ scrollToBottom =() =>{
             />
           ))
         }
-    
         <div>
-          {/* ref= */}
-           {el => this.messgaesEnd = el}
+          ref={el => this.messgaesEnd = el}
         </div>
       </div>
     )
@@ -48,15 +48,14 @@ scrollToBottom =() =>{
 
 const styles = {
   messageList: {
-    // backgroundColor: 'white',
-    color: 'white',
+    backgroundColor: 'white',
     flex: 1,
     paddingBottom: '1rem',
     overflowY: 'scroll',
   },
 
   roomAnnouncement: {
-    padding: '2px 1px',
+    padding: '2rem 1rem',
   },
 
   h3: {

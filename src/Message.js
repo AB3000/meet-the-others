@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 // import Avatar from './Avatar'
 // import Metadata from './Metadata'
 
