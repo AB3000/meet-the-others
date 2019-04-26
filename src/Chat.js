@@ -70,7 +70,8 @@ class Chat extends Component {
 
   render() {
     return (
-      <div style={{backgroundColor: 'white', position: 'fixed', bottom: '0px', padding: '20px'}}>
+      <div style={{backgroundColor: 'black', position: 'fixed', bottom: '0px', padding: 
+            '20px', color: 'white'}}>
         <ul>{this.renderMessages()}</ul>
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleChange}></input>
