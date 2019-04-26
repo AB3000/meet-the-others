@@ -27,7 +27,8 @@ class Chat extends Component {
     var user = auth.currentUser
     if (user) {
       this.setState({ user: user, room: user.photoURL }) // storing room info in photoURL
-    } else {
+    } 
+    else {
       window.alert("Sign in error occured. Please sign in again.")
       window.location = window.location.protocol + "//" + window.location.host
     }
@@ -64,7 +65,7 @@ class Chat extends Component {
 
   renderMessages() {
     return this.state.messages.map((m) => (
-      <li>{m.time + " " + m.user + ": " + m.text}</li>
+      <li>{m.time + " " + m.user + ": " + m.text + "(I like to be " + m.room + ")"}</li>
     ))
   }
 

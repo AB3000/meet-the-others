@@ -8,7 +8,7 @@ const Message = ({ message }) => {
   return (
     <div
       className="Message"
-      style={styles.message}
+      // style={styles.message}
     >
       {/* <Avatar user={message.user} /> */}
 
