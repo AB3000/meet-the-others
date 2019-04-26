@@ -81,7 +81,7 @@ class Chat extends Component {
   render() {
     return (
       <div style={{backgroundColor: 'black', padding: 
-            '20px', color: 'white', overflowY: 'scroll'}}>
+            '20px', color: 'white', overflowY: 'scroll', fontSize: '20px'}}>
         <ul>{this.renderMessages()}</ul>
         <form onSubmit={this.handleSubmit}>
           <input type="text" style = {{color: '#888888', backgroundColor: 'white', height: '40%',
