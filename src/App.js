@@ -81,7 +81,7 @@ function name() {
     , document.getElementById("third").value, document.getElementById("fourth").value,
   document.getElementById("fifth").value]
   var natureCount = 0, cityCount = 0, indoorsCount = 0;
-  console.log(list.get("nature"));
+  //console.log(list.get("nature"));
   for (var i = 0; i < chosenOptions.length; i++) {
     if (list.get("nature").indexOf(chosenOptions[i]) >= 0) {
       natureCount++;
@@ -177,9 +177,13 @@ class App extends Component {
         this.setState({ errorMessage: "Invalid signin" })
       })
       .then((e) => {
-        console.log("signed in")
-        console.log(auth.currentUser)
-        this.props.history.push('Chat')
+        if(this.state.errorMessage === "Invalid signin"){
+          this.props.history.push('/');
+        } else {
+          console.log("signed in")
+          console.log(auth.currentUser)
+          this.props.history.push('Chat')
+        }
         //window.location = window.location.protocol + "//" + window.location.host + "/Chat"
       })
   }
@@ -201,6 +205,12 @@ class App extends Component {
         //console.log("test")
         //this.setState({...this.state})
         // not the best approach but it'll do for now
+
+        if(this.state.errorMessage === "Invalid Signup"){
+          window.alert("A user already exists with this name! Please also ensure your password is" 
+          + " 6 characters or longer.");
+          this.props.history.push('/');
+        } else {
         auth
         .signInWithEmailAndPassword(this.state.username, this.state.password)
         .catch(error => { console.log(error) })
@@ -215,7 +225,8 @@ class App extends Component {
             this.props.history.push('Chat')
           })
         })
-      })
+      }
+    })
       /* useless code
     this.setState({ first: event.target.first.value })
     this.setState({ second: event.target.second.value })

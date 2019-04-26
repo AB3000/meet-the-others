@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: '1.2rem',
     border: 0,
+    bottom: '0px',
+    position: 'fixed',
+
 
     ':focus': {
       outline: 0,
