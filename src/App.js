@@ -502,9 +502,10 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: '20px',
     margin: '8px 0',
+    height: '30px',
     display: 'inline-block',
     border: '1px solid #ccc',
-    borderRadius: '4px',
+    borderRadius: '8px',
     boxSizing: 'border-box',
     // overflow: 'hidden',
 
